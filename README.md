@@ -1,5 +1,9 @@
 # Greenlist Registry (front end) (full-stack app)
 
+Designers, especially independent and small designers, lack a centralized resource to find, research, and even discover eco-friendly sustainable materials they can use.
+
+Greenlist Registry aims to be an official registry, directory, and forum for designers and brands to find providers and suppliers of green materials. As well as serve as a networking vessel for material reclaim.
+
 ## Repos
 
 - [Back End](https://github.com/joseph-p-pasaoa/greenlistRegistry_back__Web)
