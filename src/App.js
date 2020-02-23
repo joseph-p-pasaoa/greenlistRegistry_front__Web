@@ -8,26 +8,36 @@ Client APP Main | Greenlist Registry (a full-stack sustainable material forum ap
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Main from './Components/Main'
-import NewList from './Components/NewList'
-import ReclaimList from './Components/ReclaimList'
 import RegisterForm from './Components/RegisterForm'
-import User from './Components/User'
-import ReclaimForm from './Components/ReclaimForm'
+import Resourcer from './Components/Resourcer'
+import Material from './Components/Material'
+import Creator from './Components/Creator'
+import ReclaimedForm from './Components/ReclaimedForm'
 import Welcome from './Components/Welcome'
 import './App.css';
 
 /* MAIN */
 class App extends React.Component {
+  state = {
+    id: 1
+  }
+
+  renderReclaimedForm = () => {
+    return (
+      <ReclaimedForm loggedUser={this.state}/>
+    )
+  }
+
   render() {
     return (
       <div className='App'>
           <Switch>
-            <Route path='/main' component={Main}/>
-            <Route path='/main/new' component={NewList}/>
-            <Route path='/main/reclaim' component={ReclaimList}/>
             <Route path='/register' component={RegisterForm}/>
-            <Route path='/users/:id' component={User}/>
-            <Route path='/users/reclaim' component={ReclaimForm}/>
+            <Route path='/main' component={Main}/>
+            <Route path='/resourcer/:id' component={Resourcer}/>
+            <Route path='/material/:id' component={Material}/>
+            <Route path='/creator/:id' component={Creator}/>
+            <Route path='/addReclaimed' render={this.renderReclaimedForm}/>
             <Route path='/' component={Welcome}/>
           </Switch>
       </div>
