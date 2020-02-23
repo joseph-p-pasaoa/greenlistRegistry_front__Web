@@ -21,6 +21,7 @@ Greenlist Registry aims to be an official registry, directory, and forum for des
 - **LEAD Instructor:** [Alejandro Franco](https://github.com/alejo4373)
 - **IA:** [Jung Rae Jang](https://github.com/jungraejang)
 - **IA:** [Wynter Reid](https://github.com/wynterreid)
+- **Program Manager:** Dessa Shepherd
 
 ## Industry Advisors
 
@@ -28,6 +29,14 @@ Greenlist Registry aims to be an official registry, directory, and forum for des
 - Isabella Montoya Paz -- [PazLifestyle](https://www.pazlifestyle.com/)
 - Van Tran -- ()
 - Lisa ? -- ()
+
+---
+
+## Developers' Notes
+
+### **I. Wireframes**
+
+[Wireframes PDF](./readme/wireframes.pdf)
 
 ---
 
