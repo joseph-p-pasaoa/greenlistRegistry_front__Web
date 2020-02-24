@@ -5,19 +5,14 @@ Client APP CSS | Greenlist Registry (a full-stack sustainable material forum app
 
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-html, body, div#root, .App {
-  height: 100%;
-  width: 100%;
-}
 
 ul, li {
   list-style: none;
 }
+
 
 .flex-column {
   display: flex;
@@ -35,22 +30,10 @@ ul, li {
   align-items: flex-start;
 }
 
-h1 {
-  font-family: 'Raleway', sans-serif;
-  font-size: 2em;
-  font-weight: bold;
-}
-
-p {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.9em;
-}
-
 strong {
   font-weight: bold;
 }
 
-
 .App {
-  text-align: left;
+  text-align: center;
 }
