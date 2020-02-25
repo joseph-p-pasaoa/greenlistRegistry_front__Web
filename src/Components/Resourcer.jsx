@@ -1,32 +1,109 @@
 import React from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const Resourcer = () => {
-  return (
-    <div className='container'>
-      <h1>Resourcer</h1>
-      <div className='resourcerCard'>
-        <h3>TENCEL's Contact Info</h3>
-        <img className='resourcerPic' src='https://cdn3.volusion.com/evqre.ktvax/v/vspfiles/photos/ALTXLME-RFE3197-3.jpg?v-cache=1465366611'></img>
-        <p className='resourcerInfo'>Company Name: Telcel Incorporated</p>
-        <p className='resourcerInfo'>About: Lyocell Producer</p>
-        <p className='resourcerInfo'>Phone Number: 111-222-3333</p>
-        <p className='resourcerInfo'>Email: telcel@gmail.com</p>
-        <p className='resourcerInfo'>Website: telcel.com</p>
-        <p className='resourcerInfo'>Address: Switzerland</p>
-      </div>
-      <h3>Products</h3>
-      <div className='productsContainer'>
-        <Link to='/material/1'>
-        <div className='productCard'>
-          <img className='productPic' src='https://cdn.childrensalon.com/media/catalog/product/cache/0/small_image/256x256/9df78eab33525d08d6e5fb8d27136e95/c/h/chloe-blue-lyocell-chambray-skirt-287787-8d9fbab2cf9a6d5a34e387f923e03cb6c2949a23.jpg'></img>
-          <p className='productName'>Lyocell</p>
-          <p className='productBody'>This is good for the planet</p>
+class Resourcer extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      resourcerInfo: [],
+      productInfo: []
+    }
+  }
+
+  async componentDidMount() {
+    await this.handleGetResoucerByID()
+    await this.handleGetProductByID()
+
+  }
+
+  async handleGetResoucerByID() {
+    const { resourcerInfo } = this.state
+    try {
+      let getResourcerInfo = await axios.get(`/resourcers/1`)
+      let getResourcerInfoData = getResourcerInfo.data.payload
+      this.setState({
+        resourcerInfo: [...resourcerInfo, getResourcerInfoData]
+      })
+
+    } catch (err) {
+      console.log('ERROR', err)
+    }
+  }
+
+  async handleGetProductByID() {
+    try {
+      let getproductInfo = await axios.get(`/products/1`)
+      let getproductInfoData = getproductInfo.data.payload
+      this.setState({
+        productInfo: getproductInfoData
+      })
+
+    } catch (err) {
+      console.log('ERROR', err)
+    }
+  }
+
+
+ 
+
+  render() {
+    const { resourcerInfo, productInfo } = this.state
+    console.log("productInfo", productInfo)
+    console.log(this.props, "this.props")
+
+
+    return (
+      <div className='container'>
+        <h1>Resourcer</h1>
+        <div>
+          {resourcerInfo.map(el => {
+            return (
+              <div>
+                <h3>{el.company}'s Contact Info</h3>
+                <img className='resourcerPic' src={el.avatar_url}></img>
+                <p className='resourcerInfo'>Company Name: {el.company}</p>
+                <p className='resourcerInfo'>About: {el.about}</p>
+                <p className='resourcerInfo'>Phone Number: {el.phone_number}</p>
+                <p className='resourcerInfo'>Email: {el.email}</p>
+                <p className='resourcerInfo'>Website: {el.website_url}</p>
+                <p className='resourcerInfo'>Address:{el.address}</p>
+              </div>
+            )
+          })
+          }
+
+          <h3>Products</h3>
+          <div className='productsContainer'>
+            {productInfo.map(el => {
+              return (
+               <div>
+                  <Link to= {`/material/${el.id}`}>
+                  <div className='productCard'>
+                    <img className='productPic' src={el.photo_url}></img>
+                    <p className='productName'>{el.name}</p>
+                    <p className='productBody'>{el.body}</p>
+                  </div>
+                </Link>
+                 </div>
+
+              )
+            })}
+
+
+          </div>
         </div>
-        </Link>
+
+
+
+
+
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Resourcer
+
+
+
