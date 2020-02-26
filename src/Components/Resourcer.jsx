@@ -59,7 +59,7 @@ class Resourcer extends React.Component {
             return (
               <div>
                 <h3>{el.company}'s Contact Info</h3>
-                <img className='resourcerPic' src={el.avatar_url}></img>
+                <img className='resourcerPic' src={el.avatar_url} alt="resourcer's avatar"></img>
                 <p className='resourcerInfo'>Company Name: {el.company}</p>
                 <p className='resourcerInfo'>About: {el.about}</p>
                 <p className='resourcerInfo'>Phone Number: {el.phone_number}</p>
@@ -78,7 +78,7 @@ class Resourcer extends React.Component {
                 <div>
                   <Link to={`/material/${el.id}`}>
                     <div className='productCard'>
-                      <img className='productPic' src={el.photo_url}></img>
+                      <img className='productPic' src={el.photo_url} alt="material"></img>
                       <p className='productName'>{el.name}</p>
                       <p className='productBody'>{el.body}</p>
                     </div>

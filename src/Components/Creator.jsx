@@ -81,7 +81,7 @@ class Creator extends React.Component {
             return (
               <div>
                 <h3>{el.username}'s Contact Info</h3>
-                <img className='creatorPic' src={el.avatar_url}></img>
+                <img className='creatorPic' src={el.avatar_url} alt="user avatar"></img>
                 <p className='creatorInfo'>First Name: {el.firstname}</p>
                 <p className='creatorInfo'>Last Name: {el.lastname}</p>
                 <p className='creatorInfo'>About: {el.about}</p>
@@ -116,7 +116,7 @@ class Creator extends React.Component {
                   {reclaim.photo_url.map(picture => {
                     return (
                       <div>
-                        <img src={picture}></img>
+                        <img src={picture} alt="reclaim view"></img>
                       </div>
                     )
                   })}
