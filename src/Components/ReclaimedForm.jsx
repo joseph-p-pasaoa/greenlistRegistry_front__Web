@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import './ReclaimedForm.css';
@@ -90,6 +91,7 @@ class ReclaimedForm extends Component {
       errorRefs[errors[0]].current.focus();
     } else {
 
+      // proceed with add request to server
       const reclaimPost = new FormData();
 
       reclaimPost.append("name", titleTxt);
@@ -103,9 +105,11 @@ class ReclaimedForm extends Component {
         reclaimPost.append('reclaimPhotos', photoFiles[i]);
       }
 
-      const response = await axios.post("/reclaims/add", reclaimPost);
-      console.log(response);
-      // TODO PUSH HISTORY TO CURRENT USER PAGE? PUSH SOMEWHERE LOL
+      await axios.post("/reclaims/add", reclaimPost);
+
+      this.props.history.push({
+          pathname: `/creator/${this.props.loggedUser.id}}`
+      });
     }
   }
 
@@ -216,4 +220,4 @@ class ReclaimedForm extends Component {
 }
 
 
-export default ReclaimedForm;
+export default withRouter(ReclaimedForm);
