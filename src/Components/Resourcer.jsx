@@ -3,11 +3,11 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 class Resourcer extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       resourcerInfo: [],
-      productInfo: []
+      productInfo: [],
     }
   }
 
@@ -19,8 +19,9 @@ class Resourcer extends React.Component {
 
   async handleGetResoucerByID() {
     const { resourcerInfo } = this.state
+    let resourcerId = parseInt(this.props.match.params.id)
     try {
-      let getResourcerInfo = await axios.get(`/resourcers/1`)
+      let getResourcerInfo = await axios.get(`/resourcers/${resourcerId}`)
       let getResourcerInfoData = getResourcerInfo.data.payload
       this.setState({
         resourcerInfo: [...resourcerInfo, getResourcerInfoData]
@@ -32,8 +33,10 @@ class Resourcer extends React.Component {
   }
 
   async handleGetProductByID() {
+    let resourcerId = parseInt(this.props.match.params.id)
+
     try {
-      let getproductInfo = await axios.get(`/products/1`)
+      let getproductInfo = await axios.get(`/products/${resourcerId}`)
       let getproductInfoData = getproductInfo.data.payload
       this.setState({
         productInfo: getproductInfoData
@@ -45,14 +48,10 @@ class Resourcer extends React.Component {
   }
 
 
- 
+
 
   render() {
     const { resourcerInfo, productInfo } = this.state
-    console.log("productInfo", productInfo)
-    console.log(this.props, "this.props")
-
-
     return (
       <div className='container'>
         <h1>Resourcer</h1>
@@ -77,19 +76,18 @@ class Resourcer extends React.Component {
           <div className='productsContainer'>
             {productInfo.map(el => {
               return (
-               <div>
-                  <Link to= {`/material/${el.id}`}>
-                  <div className='productCard'>
-                    <img className='productPic' src={el.photo_url}></img>
-                    <p className='productName'>{el.name}</p>
-                    <p className='productBody'>{el.body}</p>
-                  </div>
-                </Link>
-                 </div>
+                <div>
+                  <Link to={`/material/${el.id}`}>
+                    <div className='productCard'>
+                      <img className='productPic' src={el.photo_url}></img>
+                      <p className='productName'>{el.name}</p>
+                      <p className='productBody'>{el.body}</p>
+                    </div>
+                  </Link>
+                </div>
 
               )
             })}
-
 
           </div>
         </div>

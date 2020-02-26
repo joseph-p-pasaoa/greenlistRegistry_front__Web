@@ -32,29 +32,29 @@ class App extends React.Component {
     )
   }
 
-  renderResourcer = () => {
+  renderResourcer = (routeProps) => {
     return (
       <>
       <NavigationBar/>
-      <Resourcer loggedUser={this.state}/>
+      <Resourcer loggedUser={this.state} {...routeProps}/>
       </>
     )
   }
 
-  renderMaterial = () => {
+  renderMaterial = (routeProps) => {
     return (
       <>
       <NavigationBar/>
-      <Material loggedUser={this.state}/>
+      <Material loggedUser={this.state} {...routeProps}/>
       </>
     )
   }
 
-  renderCreator = () => {
+  renderCreator = (routeProps) => {
     return (
       <>
       <NavigationBar/>
-      <Creator loggedUser={this.state}/>
+      <Creator loggedUser={this.state} {...routeProps}/>
       </>
     )
   }
