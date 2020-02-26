@@ -84,7 +84,7 @@ class Creator extends React.Component {
             return (
               <div>
                 <h3>{el.username}'s Contact Info</h3>
-                <img className='creatorPic' src={el.avatar_url}></img>
+                <img className='creatorPic' src={el.avatar_url} alt="user avatar" ></img>
                 <p className='creatorInfo'>First Name: {el.firstname}</p>
                 <p className='creatorInfo'>Last Name: {el.lastname}</p>
                 <p className='creatorInfo'>About: {el.about}</p>
@@ -116,23 +116,23 @@ class Creator extends React.Component {
             {allReclaims.map(reclaim => {
               return (
                 <div  >
-                  <Carousel  interval= '1000000' >
+                  <Carousel interval='1000000' >
                     {reclaim.photo_url.map(picture => {
                       return (
                         <Carousel.Item >
-                        <div>
-                            <img className ="reclaimedPic" className = 'd-block w-100  reclaimedPic' src={picture}></img>
-                            </div>
+                          <div>
+                            <img className="reclaimedPic" className='d-block w-100  reclaimedPic' src={picture} alt="reclaim view"></img>
+                          </div>
                         </Carousel.Item>
                       )
                     })}
                   </Carousel>
-                  <div className= 'reclaimedInfo'>
-                  <p className='reclaimedName'>name: {reclaim.name}</p>
-                  <p className='reclaimedlabel;'>{reclaim.quantity_label}</p>
-                  <p className='reclaimedBody'>{reclaim.body}</p>
-                  <p className='reclaimedQuantity'>Qty: {reclaim.quantity_num}</p>
-                  <p className='reclaimedComposition'>{reclaim.composition}</p>
+                  <div className='reclaimedInfo'>
+                    <p className='reclaimedName'>name: {reclaim.name}</p>
+                    <p className='reclaimedlabel;'>{reclaim.quantity_label}</p>
+                    <p className='reclaimedBody'>{reclaim.body}</p>
+                    <p className='reclaimedQuantity'>Qty: {reclaim.quantity_num}</p>
+                    <p className='reclaimedComposition'>{reclaim.composition}</p>
                   </div>
                 </div>
               )
