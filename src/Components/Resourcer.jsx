@@ -49,7 +49,6 @@ class Resourcer extends React.Component {
 
 
 
-
   render() {
     const { resourcerInfo, productInfo } = this.state
     return (

@@ -26,8 +26,8 @@ class App extends React.Component {
   renderMain = () => {
     return (
       <>
-      <NavigationBar/>
-      <Main loggedUser={this.state}/>
+        <NavigationBar />
+        <Main loggedUser={this.state} />
       </>
     )
   }
@@ -35,8 +35,8 @@ class App extends React.Component {
   renderResourcer = (routeProps) => {
     return (
       <>
-      <NavigationBar/>
-      <Resourcer loggedUser={this.state} {...routeProps}/>
+        <NavigationBar />
+        <Resourcer loggedUser={this.state} {...routeProps} />
       </>
     )
   }
@@ -44,8 +44,8 @@ class App extends React.Component {
   renderMaterial = (routeProps) => {
     return (
       <>
-      <NavigationBar/>
-      <Material loggedUser={this.state} {...routeProps}/>
+        <NavigationBar />
+        <Material loggedUser={this.state} {...routeProps} />
       </>
     )
   }
@@ -53,8 +53,8 @@ class App extends React.Component {
   renderCreator = (routeProps) => {
     return (
       <>
-      <NavigationBar/>
-      <Creator loggedUser={this.state} {...routeProps}/>
+        <NavigationBar />
+        <Creator loggedUser={this.state} {...routeProps} />
       </>
     )
   }
@@ -62,8 +62,8 @@ class App extends React.Component {
   renderReclaimedForm = () => {
     return (
       <>
-      <NavigationBar/>
-      <ReclaimedForm loggedUser={this.state}/>
+        <NavigationBar />
+        <ReclaimedForm loggedUser={this.state} />
       </>
     )
   }
@@ -71,15 +71,15 @@ class App extends React.Component {
   render() {
     return (
       <div className='App'>
-          <Switch>
-            <Route path='/register' component={RegisterForm}/>
-            <Route path='/main' render={this.renderMain}/>
-            <Route path='/resourcer/:id' render={this.renderResourcer}/>
-            <Route path='/material/:id' render={this.renderMaterial}/>
-            <Route path='/creator/:id' render={this.renderCreator}/>
-            <Route path='/addReclaimed' render={this.renderReclaimedForm}/>
-            <Route path='/' component={Welcome}/>
-          </Switch>
+        <Switch>
+          <Route path='/register' component={RegisterForm} />
+          <Route path='/main' render={this.renderMain} />
+          <Route path='/resourcer/:id' render={this.renderResourcer} />
+          <Route path='/material/:id' render={this.renderMaterial} />
+          <Route path='/creator/:id' render={this.renderCreator} />
+          <Route path='/addReclaimed' render={this.renderReclaimedForm} />
+          <Route path='/' component={Welcome} />
+        </Switch>
       </div>
     )
   }

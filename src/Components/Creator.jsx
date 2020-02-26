@@ -17,7 +17,6 @@ class Creator extends React.Component {
   async componentDidMount() {
     await this.handleGetCreatorInfo()
     await this.handleGetReclaimedByID()
-    // await this.handleGetPhotoByID()
   }
 
 
@@ -39,7 +38,6 @@ class Creator extends React.Component {
     let creatorId = this.props.match.params.id
     try {
       let getReclaimed = await axios.get(`/reclaims/sellReclaimed/${creatorId}/false`, { id: creatorId, is_need: false })
-      console.log(getReclaimed)
       let getReclaimedData = getReclaimed.data.payload
       let reclaims = []
       let reclaimNames = {}
@@ -50,7 +48,6 @@ class Creator extends React.Component {
         }
       }
       for (let reclaim of reclaims) {
-        console.log(typeof (reclaim.photo_url))
         for (let picture of getReclaimedData) {
           if (picture.name === reclaim.name) {
             if (typeof (reclaim.photo_url) === 'string') {
@@ -63,7 +60,6 @@ class Creator extends React.Component {
           }
         }
       }
-      console.log(reclaims)
       this.setState({
         allReclaims: reclaims,
         reclaimedData: getReclaimedData
@@ -74,13 +70,8 @@ class Creator extends React.Component {
   }
 
 
-
-
-
   render() {
     const { creatorInfo, allReclaims, photos } = this.state
-    console.log("this.props", this.props)
-
 
     return (
       <div className='container'>
@@ -129,7 +120,6 @@ class Creator extends React.Component {
                       </div>
                     )
                   })}
-
                   <p className='reclaimedName'>name: {reclaim.name}</p>
                   <p className='reclaimedlabel;'>{reclaim.quantity_label}</p>
                   <p className='reclaimedBody'>{reclaim.body}</p>
@@ -140,8 +130,6 @@ class Creator extends React.Component {
             })
 
             }
-
-
 
           </div>
         </div>
