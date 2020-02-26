@@ -1,32 +1,216 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import axios from 'axios';
 
-class ReclaimedForm extends React.Component {
+import './ReclaimedForm.css';
 
-  handleSubmit = (e) => {
-    e.preventDefault()
+
+class ReclaimedForm extends Component {
+  state = {
+    isNeedSelect: false, 
+    titleTxt: "",
+    compositionTxt: "",
+    quantityNum: 1,
+    quantityLabelSelect: "default",
+    postBodyTxt: "",
+    firstPhotoFile: null,
+    errorMsg: ""
+  };
+
+  // REFS CREATION
+  refTitleInput = React.createRef();
+  refCompositionInput = React.createRef();
+  refQuantityInput = React.createRef();
+  refQuantityLabel = React.createRef();
+  refBodyInput = React.createRef();
+  refFileInput = React.createRef();
+  refBtnSubmit = React.createRef();
+
+
+  // EVENT HANDLERS
+  handleChange = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    });
   }
+
+  handleFileInput = (e) => {
+    this.setState({
+        firstPhotoFile: e.target.files[0]
+    });
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    this.refBtnSubmit.current.blur();
+
+    const {
+      isNeedSelect,
+      titleTxt,
+      compositionTxt,
+      quantityNum,
+      quantityLabelSelect,
+      postBodyTxt,
+      firstPhotoFile
+    } = this.state;
+    
+    // input checks
+    let errorsOutput = [];
+    const errorRefs = [
+      this.refTitleInput,
+      this.refCompositionInput,
+      this.refQuantityInput,
+      this.refQuantityLabel,
+      this.refBodyInput
+    ];
+    let errors = [];
+    if (!titleTxt || !titleTxt.trim() || titleTxt.trim().length > 50) {
+      errorsOutput.push("Your post title is empty or too long");
+      errors.push(0);
+    }
+    if (!compositionTxt || !compositionTxt.trim() || compositionTxt.trim().length > 150) {
+      errorsOutput.push("Your fabrics entry is empty or too long");
+      errors.push(1);
+    }
+    const qtyNumCheck1 = isNaN(parseInt(quantityNum));
+    const qtyNumCheck2 = ("" + quantityNum).length !== parseInt(quantityNum).toString().length;
+    if (qtyNumCheck1 || qtyNumCheck2) {
+      errorsOutput.push("Your quantity is invalid. Please check your number");
+      errors.push(2);
+    }
+    if (quantityLabelSelect === "default") {
+      errorsOutput.push("Please choose a unit of quantity");
+      errors.push(3);
+    }
+    if (!postBodyTxt || !postBodyTxt.trim()) {
+      errorsOutput.push("Your post is empty or missing. Please describe your reclaim");
+      errors.push(4);
+    }
+    if (errorsOutput.length > 0) {
+      this.setState({ errorMsg: errorsOutput.join('\n') });
+      errorRefs[errors[0]].current.focus();
+    } else {
+
+      const reclaimPost = new FormData();
+
+      reclaimPost.append("name", titleTxt);
+      reclaimPost.append("composition", compositionTxt);
+      reclaimPost.append("quantity_num", quantityNum);
+      reclaimPost.append("quantity_label", quantityLabelSelect);
+      reclaimPost.append("body", postBodyTxt);
+      reclaimPost.append("reclaimPhoto", firstPhotoFile);
+      reclaimPost.append("creator_id", this.props.loggedUser.id);
+      reclaimPost.append("is_need", isNeedSelect);
+
+      const response = await axios.post("/reclaims/add", reclaimPost);
+      console.log(response);
+      // TODO PUSH HISTORY TO CURRENT USER PAGE? PUSH SOMEWHERE LOL
+    }
+  }
+
 
   render() {
+    const { titleTxt, compositionTxt, quantityNum, quantityLabelSelect, postBodyTxt, errorMsg } = this.state;
+
     return (
-      <div className='container'>
+      <div className="container">
         <h1>Reclaimed Form</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' placeholder='title'></input>
-          <input type='text' placeholder='composition'></input>
-          <input type='text' placeholder='quantity'></input>
-          <input type='text' placeholder='body'></input>
-          <br/>
-          <input type='file'></input>
-          <br/>
-          <br/>
-          <Link to='/main'>
-          <button>Post Reclaimed</button>
-          </Link>
+        <form
+          onSubmit={this.handleSubmit}
+          className="form--addreclaim flex-column"
+          encType="multipart/form-data"
+        >
+
+          {/* title input */}
+          <div className="form-row flex-row">
+            <label htmlFor="titleTxt">Post Title:</label>
+            <input
+              type="text"
+              name="titleTxt"
+              id="titleTxt"
+              placeholder="Start with a title"
+              className="input-title"
+              ref={this.refTitleInput}
+              value={titleTxt}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          {/* fabric input */}
+          <div className="form-row flex-row">
+            <label htmlFor="compositionTxt">Fabric:</label>
+            <input
+              type="text"
+              name="compositionTxt"
+              id="compositionTxt"
+              placeholder="What fabric do you have?"
+              className="input-composition"
+              ref={this.refCompositionInput}
+              value={compositionTxt}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          {/* amount input */}
+          <div className="form-row flex-row">
+            <label htmlFor="quantityNum">Amount Available:</label>
+            <input
+              type="number"
+              name="quantityNum"
+              id="quantityNum"
+              placeholder="10"
+              min="1"
+              className="input-quantity-num"
+              ref={this.refQuantityInput}
+              value={quantityNum}
+              onChange={this.handleChange}
+            />
+            <select
+              id="quantityLabelSelect"
+              name="quantityLabelSelect"
+              ref={this.refQuantityLabel}
+              value={quantityLabelSelect}
+              onChange={this.handleChange}
+            >
+              <option value="default" autoFocus disabled>Choose unit type --</option>
+              <option value="lbs">lbs</option>
+              <option value="oz">ounces</option>
+              <option value="kgs">kgs</option>
+              <option value="grams">grams</option>
+            </select>
+          </div>
+
+          {/* body input */}
+          <div className="form-row flex-row">
+            <label htmlFor="postBodyTxt">Post Body:</label>
+            <textarea
+              type="text"
+              name="postBodyTxt"
+              id="postBodyTxt"
+              placeholder="Tell everyone more about your fabrics to reclaim"
+              className="input-body"
+              ref={this.refBodyInput}
+              value={postBodyTxt}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          {/* file input */}
+          <input
+            type="file"
+            accept="image/*"
+            ref={this.refFileInput}
+            onInput={this.handleFileInput}
+            onChange={e => e.target.value}
+          />
+
+          <button ref={this.refBtnSubmit}>Submit</button>
+
+          <p className="msg--error">{errorMsg}</p>
         </form>
       </div>
-    )
-  }
+    );
+  };
 }
 
-export default ReclaimedForm
+
+export default ReclaimedForm;
