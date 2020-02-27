@@ -5,10 +5,12 @@
 }
 
 
-.reclaimedCard{
+.reclaimedContainer{
     display: grid;
-    height:300px;
-    width: 250px;  
+    height:auto;
+    display: grid;
+    grid-template-columns: repeat(3, 32%);
+    grid-column-gap: 10px;
 }
 
 .w-100{
