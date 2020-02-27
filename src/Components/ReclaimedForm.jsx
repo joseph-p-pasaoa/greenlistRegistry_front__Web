@@ -108,7 +108,7 @@ class ReclaimedForm extends Component {
       await axios.post("/reclaims/add", reclaimPost);
 
       this.props.history.push({
-          pathname: `/creator/${this.props.loggedUser.id}}`
+          pathname: `/creator/${this.props.loggedUser.id}`
       });
     }
   }
