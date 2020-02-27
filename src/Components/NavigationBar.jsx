@@ -45,12 +45,12 @@ class NavigationBar extends React.Component {
           <DropdownButton id="dropdown-basic-button" title="Material">
             {allMaterials.map(material => {
               return (
-                <Dropdown.Item href={`/material/${parseInt(material.id)}`}>{material.name}</Dropdown.Item>
+                <Dropdown.Item key={material.id} href={`/material/${parseInt(material.id)}`}>{material.name}</Dropdown.Item>
               )
             })}
 
           </DropdownButton>
-          <Link onClick={this.props.resetUser}>Log out</Link>{' '}
+          <Link onClick={this.props.resetUser} to="/">Log out</Link>{' '}
         </div>
 
 
