@@ -36,21 +36,6 @@ class NavigationBar extends React.Component {
     // PRE-RETURN
     const { allMaterials } = this.state;
 
-    let listDropdownItems = null;
-    if (allMaterials.length > 0) {
-      listDropdownItems = allMaterials.map(material => {
-        return (
-          <Dropdown.Item
-            key={material.id}
-            onClick={() => this.props.history.push(`/material/${parseInt(material.id)}`)}
-          >
-            {material.name}
-          </Dropdown.Item>
-        );
-      });
-    };
-    
-
     return (
       <div className='container'>
         <div className='navigationBar'>
@@ -68,9 +53,6 @@ class NavigationBar extends React.Component {
           </NavDropdown>
           <Link onClick={this.props.resetUser} to="/">Log out</Link>{' '}
         </div>
-
-
-
       </div>
     )
   }
