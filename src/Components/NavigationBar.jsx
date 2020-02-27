@@ -2,8 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import './NavigationBar.css'
 
 
@@ -39,15 +38,15 @@ class NavigationBar extends React.Component {
           <Link to='/main'>Main</Link>{' '}
           <Link to={`/creator/${this.props.loggedUser.id}`}>Profile</Link>{' '}
           <Link to='/addReclaimed'>Post reclaimed</Link>{' '}
-
-          <DropdownButton id="dropdown-basic-button" title="Material">
+          <NavDropdown id="nav-dropdown" title="Material">
             {allMaterials.map(material => {
               return (
-                <Dropdown.Item href={`/material/${parseInt(material.id)}`}>{material.name}</Dropdown.Item>
+                <Link to={`/material/${parseInt(material.id)}`} key={material.id}>
+                  <p className='dropdownItem'>{material.name}</p>
+                </Link>
               )
             })}
-
-          </DropdownButton>
+          </NavDropdown>
           <Link to='/'>Log out</Link>{' '}
         </div>
 
