@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
 class Welcome extends React.Component {
@@ -8,7 +8,7 @@ class Welcome extends React.Component {
     this.state = {
       username: "",
       password: "",
-      id: ""
+      id: false
     };
   }
 
@@ -21,7 +21,7 @@ class Welcome extends React.Component {
 
   submitForm = async event => {
     event.preventDefault();
-    let { username, password } = this.state;
+    let { username, password, id } = this.state;
     let payload = { username, password };
 
     try {
@@ -29,18 +29,23 @@ class Welcome extends React.Component {
         "http://localhost:11500/creators/",
         payload
       );
-console.log(creator)
-
-   
-
+      this.setState({
+        id: true
+      });
+      this.props.history.push("/main")
     } catch (error) {
       console.log(error);
     }
-  };
+
+  }
+
+
+     
+  
 
   render() {
-    const { username, password } = this.state;
-    return (
+    const { username, password, id } = this.state;
+    return (    
       <div className="container">
         <h1>Welcome</h1>
         <br />
@@ -60,7 +65,7 @@ console.log(creator)
             value={password}
           ></input>
         </form>
-        <button onClick={this.submitForm}>Log In</button>
+        <button onClick={this.submitForm} >Log In</button>
         <Link to="/register">
           <button onClick={this.handleSignUp}>Sign Up</button>
         </Link>
@@ -68,4 +73,5 @@ console.log(creator)
     );
   }
 }
-export default Welcome;
+
+export default withRouter(Welcome);
