@@ -10,7 +10,7 @@ class Creator extends React.Component {
   constructor() {
     super()
     this.state = {
-      creatorInfo: [],
+      creatorInfo: {},
       allReclaims: [],
     }
   }
@@ -21,12 +21,21 @@ class Creator extends React.Component {
   }
 
   async handleGetCreatorInfo() {
-    const { creatorInfo } = this.state
     try {
       let getCreatorInfo = await axios.get(`/creators/${this.props.match.params.id}`)
       let getCreatorInfoData = getCreatorInfo.data.payload
       this.setState({
-        creatorInfo: [...creatorInfo, getCreatorInfoData]
+        creatorInfo: {
+          about: getCreatorInfoData.about,
+          address: getCreatorInfoData.address,
+          avatar_url: getCreatorInfoData.avatar_url,
+          email: getCreatorInfoData.email,
+          firstname: getCreatorInfoData.firstname,
+          lastname: getCreatorInfoData.lastname,
+          phone_number: getCreatorInfoData.phone_number,
+          username: getCreatorInfoData.username,
+          website_url: getCreatorInfoData.website_url,
+        }
       })
     } catch (err) {
       console.log('ERROR', err)
@@ -54,23 +63,16 @@ class Creator extends React.Component {
       <div className='container'>
         <h1>Creator</h1>
         <div className='creatorCard'>
-          {creatorInfo.map(el => {
-            return (
-              <div>
-                <h3>{el.username}'s Contact Info</h3>
-                <img className='creatorPic' src={el.avatar_url} alt="user avatar"></img>
-                <p className='creatorInfo'>First Name: {el.firstname}</p>
-                <p className='creatorInfo'>Last Name: {el.lastname}</p>
-                <p className='creatorInfo'>About: {el.about}</p>
-                <p className='creatorInfo'>Phone Numbers: {el.phone_number}</p>
-                <p className='creatorInfo'>Email: {el.email}</p>
-                <p className='creatorInfo'>Website: {el.website_url}</p>
-                <p className='creatorInfo'>Address: {el.address}</p>
-              </div>
-            )
-          })}
+          <h3>{creatorInfo.username}'s Contact Info</h3>
+          <img className='creatorPic' src={creatorInfo.avatar_url} alt="user avatar"></img>
+          <p className='creatorInfo'>First Name: {creatorInfo.firstname}</p>
+          <p className='creatorInfo'>Last Name: {creatorInfo.lastname}</p>
+          <p className='creatorInfo'>About: {creatorInfo.about}</p>
+          <p className='creatorInfo'>Phone Numbers: {creatorInfo.phone_number}</p>
+          <p className='creatorInfo'>Email: {creatorInfo.email}</p>
+          <p className='creatorInfo'>Website: {creatorInfo.website_url}</p>
+          <p className='creatorInfo'>Address: {creatorInfo.address}</p>
         </div>
-
         {this.props.loggedUser.id === parseInt(this.props.match.params.id) ? (
           <div>
             <Link to='/addReclaimed'>

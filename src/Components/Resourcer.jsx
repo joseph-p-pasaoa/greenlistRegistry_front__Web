@@ -6,7 +6,7 @@ class Resourcer extends React.Component {
   constructor(props) {
     super()
     this.state = {
-      resourcerInfo: [],
+      resourcerInfo: {},
       productInfo: [],
     }
   }
@@ -18,13 +18,20 @@ class Resourcer extends React.Component {
   }
 
   async handleGetResoucerByID() {
-    const { resourcerInfo } = this.state
     let resourcerId = parseInt(this.props.match.params.id)
     try {
       let getResourcerInfo = await axios.get(`/resourcers/${resourcerId}`)
       let getResourcerInfoData = getResourcerInfo.data.payload
       this.setState({
-        resourcerInfo: [...resourcerInfo, getResourcerInfoData]
+        resourcerInfo: {
+          about: getResourcerInfoData.about,
+          address: getResourcerInfoData.address,
+          avatar_url: getResourcerInfoData.avatar_url,
+          company: getResourcerInfoData.company,
+          email: getResourcerInfoData.email,
+          phone_number: getResourcerInfoData.phone_number,
+          website_url: getResourcerInfoData.website_url
+        }
       })
 
     } catch (err) {
@@ -52,23 +59,16 @@ class Resourcer extends React.Component {
     return (
       <div className='container'>
         <h1>Resourcer</h1>
-        <div>
-          {resourcerInfo.map((el, index) => {
-            return (
-              <div key={index}>
-                <h3>{el.company}'s Contact Info</h3>
-                <img className='resourcerPic' src={el.avatar_url} alt="resourcer's avatar"></img>
-                <p className='resourcerInfo'>Company Name: {el.company}</p>
-                <p className='resourcerInfo'>About: {el.about}</p>
-                <p className='resourcerInfo'>Phone Number: {el.phone_number}</p>
-                <p className='resourcerInfo'>Email: {el.email}</p>
-                <p className='resourcerInfo'>Website: {el.website_url}</p>
-                <p className='resourcerInfo'>Address:{el.address}</p>
-              </div>
-            )
-          })
-          }
-
+     
+                <h3>{resourcerInfo.company}'s Contact Info</h3>
+                <img className='resourcerPic' src={resourcerInfo.avatar_url} alt="resourcer's avatar"></img>
+                <p className='resourcerInfo'>Company Name: {resourcerInfo.company}</p>
+                <p className='resourcerInfo'>About: {resourcerInfo.about}</p>
+                <p className='resourcerInfo'>Phone Number: {resourcerInfo.phone_number}</p>
+                <p className='resourcerInfo'>Email: {resourcerInfo.email}</p>
+                <p className='resourcerInfo'>Website: {resourcerInfo.website_url}</p>
+                <p className='resourcerInfo'>Address:{resourcerInfo.address}</p>
+                
           <h3>New Materials</h3>
           <div className='productsContainer'>
             {productInfo.map(el => {
@@ -89,11 +89,6 @@ class Resourcer extends React.Component {
           </div>
         </div>
 
-
-
-
-
-      </div>
     )
   }
 }
