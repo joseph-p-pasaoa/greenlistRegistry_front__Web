@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import './ReclaimedForm.css';
@@ -12,7 +13,7 @@ class ReclaimedForm extends Component {
     quantityNum: 1,
     quantityLabelSelect: "default",
     postBodyTxt: "",
-    firstPhotoFile: null,
+    photoFiles: [],
     errorMsg: ""
   };
 
@@ -35,7 +36,7 @@ class ReclaimedForm extends Component {
 
   handleFileInput = (e) => {
     this.setState({
-        firstPhotoFile: e.target.files[0]
+        photoFiles: e.target.files
     });
   }
 
@@ -50,7 +51,7 @@ class ReclaimedForm extends Component {
       quantityNum,
       quantityLabelSelect,
       postBodyTxt,
-      firstPhotoFile
+      photoFiles
     } = this.state;
     
     // input checks
@@ -64,17 +65,17 @@ class ReclaimedForm extends Component {
     ];
     let errors = [];
     if (!titleTxt || !titleTxt.trim() || titleTxt.trim().length > 50) {
-      errorsOutput.push("Your post title is empty or too long");
+      errorsOutput.push("Post title is empty or too long");
       errors.push(0);
     }
     if (!compositionTxt || !compositionTxt.trim() || compositionTxt.trim().length > 150) {
-      errorsOutput.push("Your fabrics entry is empty or too long");
+      errorsOutput.push("Fabrics entry is empty or too long");
       errors.push(1);
     }
     const qtyNumCheck1 = isNaN(parseInt(quantityNum));
     const qtyNumCheck2 = ("" + quantityNum).length !== parseInt(quantityNum).toString().length;
     if (qtyNumCheck1 || qtyNumCheck2) {
-      errorsOutput.push("Your quantity is invalid. Please check your number");
+      errorsOutput.push("Quantity is invalid. Please check your number");
       errors.push(2);
     }
     if (quantityLabelSelect === "default") {
@@ -82,7 +83,7 @@ class ReclaimedForm extends Component {
       errors.push(3);
     }
     if (!postBodyTxt || !postBodyTxt.trim()) {
-      errorsOutput.push("Your post is empty or missing. Please describe your reclaim");
+      errorsOutput.push("Post body is empty or missing. Please add a description of your materials for reclaim");
       errors.push(4);
     }
     if (errorsOutput.length > 0) {
@@ -90,6 +91,7 @@ class ReclaimedForm extends Component {
       errorRefs[errors[0]].current.focus();
     } else {
 
+      // proceed with add request to server
       const reclaimPost = new FormData();
 
       reclaimPost.append("name", titleTxt);
@@ -97,13 +99,17 @@ class ReclaimedForm extends Component {
       reclaimPost.append("quantity_num", quantityNum);
       reclaimPost.append("quantity_label", quantityLabelSelect);
       reclaimPost.append("body", postBodyTxt);
-      reclaimPost.append("reclaimPhoto", firstPhotoFile);
       reclaimPost.append("creator_id", this.props.loggedUser.id);
       reclaimPost.append("is_need", isNeedSelect);
+      for (let i = 0; i < photoFiles.length; i++) {
+        reclaimPost.append('reclaimPhotos', photoFiles[i]);
+      }
 
-      const response = await axios.post("/reclaims/add", reclaimPost);
-      console.log(response);
-      // TODO PUSH HISTORY TO CURRENT USER PAGE? PUSH SOMEWHERE LOL
+      await axios.post("/reclaims/add", reclaimPost);
+
+      this.props.history.push({
+          pathname: `/creator/${this.props.loggedUser.id}}`
+      });
     }
   }
 
@@ -201,6 +207,7 @@ class ReclaimedForm extends Component {
             ref={this.refFileInput}
             onInput={this.handleFileInput}
             onChange={e => e.target.value}
+            multiple
           />
 
           <button ref={this.refBtnSubmit}>Submit</button>
@@ -213,4 +220,4 @@ class ReclaimedForm extends Component {
 }
 
 
-export default ReclaimedForm;
+export default withRouter(ReclaimedForm);
