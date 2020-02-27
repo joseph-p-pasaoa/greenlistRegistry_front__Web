@@ -41,12 +41,10 @@ class Resourcer extends React.Component {
       this.setState({
         productInfo: getproductInfoData
       })
-
     } catch (err) {
       console.log('ERROR', err)
     }
   }
-
 
 
   render() {
@@ -71,7 +69,7 @@ class Resourcer extends React.Component {
           })
           }
 
-          <h3>Products</h3>
+          <h3>New Materials</h3>
           <div className='productsContainer'>
             {productInfo.map(el => {
               return (

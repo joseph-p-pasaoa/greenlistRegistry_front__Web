@@ -34,7 +34,6 @@ class Creator extends React.Component {
   }
 
   async handleGetReclaimedByID() {
-    // const { allReclaims } = this.state
     let creatorId = this.props.match.params.id
     try {
       let getReclaimed = await axios.get(`/reclaims/sellReclaimed/${creatorId}/false`, { id: creatorId, is_need: false })
@@ -84,28 +83,28 @@ class Creator extends React.Component {
           )
         }
 
-        <h3>Sustainable materials </h3>
-        <div className='reclaimedContainer'>
-          <div className='reclaimedCard'>
+        <h3>Reclaimed Materials </h3>
+        <div className='reclaimedStage'>
+          <div className='reclaimedContainer'>
             {allReclaims.map(reclaim => {
               return (
-                <div  >
-                  <Carousel interval='1000000' >
+                <div className="reclaimedCard" >
+                  <Carousel interval={null} wrap={false} >
                     {reclaim.photo_url.map(picture => {
                       return (
                         <Carousel.Item >
                           <div>
-                            <img className='d-block w-100 reclaimedPic' src={picture} alt="reclaim view"></img>
+                            <img className='d-block w-100' src={picture} alt="reclaim view"></img>
                           </div>
                         </Carousel.Item>
                       )
                     })}
                   </Carousel>
-                  <div className='creatorInfo'>
-                    <p className='creatorName'>Name: {reclaim.name}</p>
-                    <p className='creatorLabel'> Qty: {reclaim.quantity_num} {reclaim.quantity_label}</p>
-                    <p className='creatorBody'>{reclaim.body}</p>
-                    <p className='creatorComposition'>Material(s): {reclaim.composition}</p>
+                  <div className='reclaimedInfo'>
+                    <p className='reclaimedName'>Name: {reclaim.name}</p>
+                    <p className='reclaimedComposition'>Material(s): {reclaim.composition}</p>
+                    <p className='reclaimedLabel'> Qty: {reclaim.quantity_num} {reclaim.quantity_label}</p>
+                    <p className='reclaimedBody'>{reclaim.body}</p>
                   </div>
                 </div>
               )
