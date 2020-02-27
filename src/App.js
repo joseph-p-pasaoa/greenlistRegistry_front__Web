@@ -7,6 +7,7 @@ Client APP Main | Greenlist Registry (a full-stack sustainable material forum ap
 /* IMPORTS */
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import './App.css';
 import NavigationBar from './Components/NavigationBar'
 import Main from './Components/Main'
 import RegisterForm from './Components/RegisterForm'
@@ -15,7 +16,7 @@ import Material from './Components/Material'
 import Creator from './Components/Creator'
 import ReclaimedForm from './Components/ReclaimedForm'
 import Welcome from './Components/Welcome'
-import './App.css';
+
 
 
 /* MAIN */
