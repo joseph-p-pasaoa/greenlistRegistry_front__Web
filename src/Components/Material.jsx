@@ -16,17 +16,7 @@ class Material extends React.Component {
 
   async componentDidUpdate() {
     if (this.state.materialId !== this.props.match.params.id) {
-      const materialId = this.props.match.params.id
-      try {
-        let getMaterialInfo = await axios.get(`/materials/${materialId}`)
-        let getMaterialInfoData = getMaterialInfo.data.payload
-        this.setState({
-          materialInfo: [getMaterialInfoData],
-          materialId: materialId
-        })
-      } catch (err) {
-        console.log('ERROR, err')
-      }
+      await this.handleGetMaterialInfo()
     }
   }
 
