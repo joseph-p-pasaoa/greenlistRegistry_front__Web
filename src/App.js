@@ -6,7 +6,7 @@ Client APP Main | Greenlist Registry (a full-stack sustainable material forum ap
 
 /* IMPORTS */
 import React from 'react'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
 
 import './App.css';
 import NavigationBar from './Components/NavigationBar'
@@ -23,28 +23,67 @@ import Welcome from './Components/Welcome'
 /* MAIN */
 class App extends React.Component {
   state = {
-    id: null,
-    username: null,
-    avatarUrl: null
+    id: localStorage.getItem('cId'),
+    username: localStorage.getItem('cUsername'),
+    avatarUrl: localStorage.getItem('cAvatarUrl')
   }
-  initialState = {
+  nullState = {
     id: null,
     username: null,
     avatarUrl: null
   }
 
+  componentDidUpdate = (prevProps, prevStates) => {
+    if (prevStates.id !== this.state.id) {
+      this.resyncCurrent();
+    }
+  }
+
+  resyncCurrent = () => {
+    const cId = localStorage.getItem('cId');
+    const cUsername = localStorage.getItem('cUsername');
+    const cAvatarUrl = localStorage.getItem('cAvatarUrl');
+    this.setState({
+        id: cId,
+        username: cUsername,
+        avatarUrl: cAvatarUrl
+    });
+  }
+
   resetUser = () => {
-    this.setState(this.initialState);
+    localStorage.removeItem('cId');
+    localStorage.removeItem('cUsername');
+    localStorage.removeItem('cAvatarUrl');
+    this.setState(this.nullState);
     this.props.history.push("/");
   }
 
   setUser = (id, username, avatarUrl) => {
+    localStorage.setItem('cId', id);
+    localStorage.setItem('cUsername', username);
+    localStorage.setItem('cAvatarUrl', avatarUrl);
     this.setState({
       id, username, avatarUrl
     })
+    this.props.history.push("/main");
+  }
+
+
+  renderRegisterForm = () => {
+    if (this.state.id !== null) {
+      return <Redirect to="/main" />;
+    }
+    return (
+      <>
+        <RegisterForm setUser={this.setUser} />
+      </>
+    )
   }
 
   renderMain = () => {
+    if (this.state.id === null) {
+      return <Redirect to="/" />;
+    }
     return (
       <>
         <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
@@ -54,6 +93,9 @@ class App extends React.Component {
   }
 
   renderResourcer = (routeProps) => {
+    if (this.state.id === null) {
+      return <Redirect to="/" />;
+    }
     return (
       <>
         <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
@@ -63,6 +105,9 @@ class App extends React.Component {
   }
 
   renderMaterial = (routeProps) => {
+    if (this.state.id === null) {
+      return <Redirect to="/" />;
+    }
     return (
       <>
         <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
@@ -72,6 +117,9 @@ class App extends React.Component {
   }
 
   renderCreator = (routeProps) => {
+    if (this.state.id === null) {
+      return <Redirect to="/" />;
+    }
     return (
       <>
         <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
@@ -81,6 +129,9 @@ class App extends React.Component {
   }
 
   renderReclaimedForm = () => {
+    if (this.state.id === null) {
+      return <Redirect to="/" />;
+    }
     return (
       <>
         <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
@@ -90,6 +141,9 @@ class App extends React.Component {
   }
 
   renderWelcome = () => {
+    if (this.state.id !== null) {
+      return <Redirect to="/main" />;
+    }
     return (
       <>
         <Welcome setUser={this.setUser} />
@@ -102,7 +156,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <Switch>
-          <Route path='/register' component={RegisterForm} />
+          <Route path='/register' render={this.renderRegisterForm} />
           <Route path='/main' render={this.renderMain} />
           <Route path='/resourcer/:id' render={this.renderResourcer} />
           <Route path='/material/:id' render={this.renderMaterial} />

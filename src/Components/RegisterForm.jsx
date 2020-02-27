@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 class RegisterForm extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       username: "",
@@ -15,7 +15,8 @@ class RegisterForm extends React.Component {
       about: "",
       website_url: "",
       address: "",
-      avatarFile: null
+      avatarFile: null,
+      warning: false
     };
   }
 
@@ -48,11 +49,24 @@ class RegisterForm extends React.Component {
     creatorPost.append("address", address);
     creatorPost.append("avatarFile", avatarFile);
 
+    let response = null;
     try {
-        await axios.post('http://localhost:11500/creators/add', creatorPost);
+        response = await axios.post('http://localhost:11500/creators/add', creatorPost);
     } catch(error) {
         console.log(error)
-    }  
+    }
+
+    if (response.data.status === "success") {
+      const { id, username, avatar_url } = response.data.payload;
+      this.setState({
+        warning: false
+      });
+      this.props.setUser(id, username, avatar_url);
+    } else {
+      this.setState({
+        warning: true
+      });
+    }
   }
 
   render() {
@@ -139,6 +153,9 @@ class RegisterForm extends React.Component {
 
           <button>Sign Up</button>
         </form>
+        <p className="warning">
+          {this.state.warning === true ? "Invalid inputs. Please fill out the fields correctly and try again" : ""}
+        </p>
       </div>
     );
   }

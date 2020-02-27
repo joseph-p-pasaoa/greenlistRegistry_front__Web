@@ -36,7 +36,6 @@ class Welcome extends React.Component {
         warning: false
       });
       this.props.setUser(id, username, avatar_url);
-      this.props.history.push("/main");
     } else {
       this.setState({
         warning: true
