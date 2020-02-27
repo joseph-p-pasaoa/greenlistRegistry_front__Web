@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
 class Welcome extends React.Component {
@@ -7,8 +7,7 @@ class Welcome extends React.Component {
     super();
     this.state = {
       username: "",
-      password: "",
-      id: ""
+      password: ""
     };
   }
 
@@ -21,18 +20,12 @@ class Welcome extends React.Component {
 
   submitForm = async event => {
     event.preventDefault();
-    let { username, password } = this.state;
+    let { username, password, id } = this.state;
     let payload = { username, password };
 
     try {
-      let creator = await axios.post(
-        "http://localhost:11500/creators/",
-        payload
-      );
-console.log(creator)
-
-   
-
+      await axios.post("http://localhost:11500/creators/", payload);
+      this.props.history.push("/main");
     } catch (error) {
       console.log(error);
     }
@@ -68,4 +61,5 @@ console.log(creator)
     );
   }
 }
-export default Welcome;
+
+export default withRouter(Welcome);
