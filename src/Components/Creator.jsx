@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import "./creator.css"
 import Carousel from "react-bootstrap/Carousel";
+
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 
 class Creator extends React.Component {
