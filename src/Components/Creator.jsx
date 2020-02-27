@@ -129,11 +129,10 @@ class Creator extends React.Component {
                     })}
                   </Carousel>
                   <div className='creatorInfo'>
-                    <p className='creatorName'>name: {reclaim.name}</p>
-                    <p className='creatorLabel'>{reclaim.quantity_label}</p>
+                    <p className='creatorName'>Name: {reclaim.name}</p>
+                    <p className='creatorLabel'> Qty: {reclaim.quantity_num} {reclaim.quantity_label}</p>
                     <p className='creatorBody'>{reclaim.body}</p>
-                    <p className='creatorQuantity'>Qty: {reclaim.quantity_num}</p>
-                    <p className='creatorComposition'>{reclaim.composition}</p>
+                    <p className='creatorComposition'>Material(s): {reclaim.composition}</p>
                   </div>
                 </div>
               )
