@@ -7,8 +7,7 @@ class Welcome extends React.Component {
     super();
     this.state = {
       username: "",
-      password: "",
-      id: false
+      password: ""
     };
   }
 
@@ -25,27 +24,16 @@ class Welcome extends React.Component {
     let payload = { username, password };
 
     try {
-      let creator = await axios.post(
-        "http://localhost:11500/creators/",
-        payload
-      );
-      this.setState({
-        id: true
-      });
-      this.props.history.push("/main")
+      await axios.post("http://localhost:11500/creators/", payload);
+      this.props.history.push("/main");
     } catch (error) {
       console.log(error);
     }
-
-  }
-
-
-     
-  
+  };
 
   render() {
-    const { username, password, id } = this.state;
-    return (    
+    const { username, password } = this.state;
+    return (
       <div className="container">
         <h1>Welcome</h1>
         <br />
@@ -65,7 +53,7 @@ class Welcome extends React.Component {
             value={password}
           ></input>
         </form>
-        <button onClick={this.submitForm} >Log In</button>
+        <button onClick={this.submitForm}>Log In</button>
         <Link to="/register">
           <button onClick={this.handleSignUp}>Sign Up</button>
         </Link>
