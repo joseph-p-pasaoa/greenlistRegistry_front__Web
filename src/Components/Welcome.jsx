@@ -50,7 +50,8 @@ class Welcome extends React.Component {
       <div className="container">
         <h1>Welcome</h1>
         <br />
-        <form>
+        <form onSubmit={this.submitForm}>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             placeholder="username"
@@ -58,6 +59,7 @@ class Welcome extends React.Component {
             name="username"
             value={username}
           />
+          <label htmlFor="password">Password:</label>
           <input
             type="text"
             placeholder="password"
@@ -65,7 +67,7 @@ class Welcome extends React.Component {
             name="password"
             value={password}
           />
-          <button onClick={this.submitForm}>Log In</button>
+          <button>Log In</button>
         </form>
         <Link to="/register">
           New user? Click here to sign up!

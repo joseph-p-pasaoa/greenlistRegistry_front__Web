@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 class RegisterForm extends React.Component {
@@ -59,6 +60,9 @@ class RegisterForm extends React.Component {
       <div className="container">
         <h1>Register Form</h1>
         <br />
+        <Link to="/">
+          Already have an account? Click here to login.
+        </Link>
         <form onSubmit={this.submitForm} encType="multipart/form-data">
           <input
             type="text"
@@ -124,12 +128,14 @@ class RegisterForm extends React.Component {
           />
 
           {/* file input */}
-          <input
-            type="file"
-            accept="image/*"
-            onInput={this.handleFileInput}
-            onChange={e => e.target.value}
-          />
+          <label>Upload Avatar
+            <input
+              type="file"
+              accept="image/*"
+              onInput={this.handleFileInput}
+              onChange={e => e.target.value}
+            />
+          </label>
 
           <button>Sign Up</button>
         </form>
