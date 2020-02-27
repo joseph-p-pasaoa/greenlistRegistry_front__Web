@@ -17,6 +17,7 @@ import ReclaimedForm from './Components/ReclaimedForm'
 import Welcome from './Components/Welcome'
 import './App.css';
 
+
 /* MAIN */
 class App extends React.Component {
   state = {
@@ -26,8 +27,8 @@ class App extends React.Component {
   renderMain = () => {
     return (
       <>
-        <NavigationBar />
-        <Main loggedUser={this.state} />
+        <NavigationBar  loggedUser={this.state} />
+        <Main loggedUser={this.state}  />
       </>
     )
   }
@@ -35,7 +36,7 @@ class App extends React.Component {
   renderResourcer = (routeProps) => {
     return (
       <>
-        <NavigationBar />
+        <NavigationBar  loggedUser={this.state}/>
         <Resourcer loggedUser={this.state} {...routeProps} />
       </>
     )
@@ -44,7 +45,7 @@ class App extends React.Component {
   renderMaterial = (routeProps) => {
     return (
       <>
-        <NavigationBar />
+        <NavigationBar  loggedUser={this.state}/>
         <Material loggedUser={this.state} {...routeProps} />
       </>
     )
@@ -53,7 +54,7 @@ class App extends React.Component {
   renderCreator = (routeProps) => {
     return (
       <>
-        <NavigationBar />
+        <NavigationBar loggedUser={this.state} />
         <Creator loggedUser={this.state} {...routeProps} />
       </>
     )
@@ -62,7 +63,7 @@ class App extends React.Component {
   renderReclaimedForm = () => {
     return (
       <>
-        <NavigationBar />
+        <NavigationBar  loggedUser={this.state}/>
         <ReclaimedForm loggedUser={this.state} />
       </>
     )
