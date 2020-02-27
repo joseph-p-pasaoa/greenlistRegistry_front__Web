@@ -1,0 +1,65 @@
+/*
+GROUP 4: ARANSA GARCIA, JOSEPH P. PASAOA, KATHY PUMA, AND SERGIO SALAMA
+Client Reclaimed Form CSS | Greenlist Registry (a full-stack sustainable material forum app)
+*/
+
+
+.form--addreclaim {
+    align-items: flex-end;
+
+    margin: 0 auto;
+    width: 60%;
+}
+
+.form--addreclaim .form-row {
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 11px;
+}
+
+.form--addreclaim label {
+    margin-top: 3px;
+}
+
+.form--addreclaim input, .form--addreclaim select, .form--addreclaim textarea {
+    margin-left: 2%;
+}
+
+.form--addreclaim input[type="text"], .form--addreclaim input[type="number"], .form--addreclaim select {
+    height: 2.2em;
+}
+
+.form--addreclaim input, .form--addreclaim textarea {
+    border-radius: 5px;
+    border-style: inset;
+    border-width: 2px;
+    padding: 2px 6px;
+}
+
+.form--addreclaim select {
+    width: 23%;
+}
+
+.form--addreclaim input[type="text"], .form--addreclaim textarea {
+    width: 76%;
+}
+
+.input-body {
+    height: 110px;
+}
+
+.form--addreclaim input[type="number"] {
+    width: 51%;
+}
+
+.form--addreclaim button {
+    margin-top: 11px;
+}
+
+.form--addreclaim p.msg--error {
+    text-align: right;
+    white-space: pre-line;
+
+    font-weight: bold;
+    color: red;
+}
