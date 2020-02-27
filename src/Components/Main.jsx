@@ -1,36 +1,71 @@
 import React from 'react'
 import NewList from './NewList'
+import NewSearch from './NewSearch'
 import ReclaimedList from './ReclaimedList'
+import ReclaimedSearch from './ReclaimedSearch'
+import axios from 'axios'
 
 class Main extends React.Component {
   state = {
-    list: 'new'
+    list: 'new',
+    input: '',
+    searchResult: []
+  }
+
+  handleInput = (event) => {
+    this.setState({
+      input: event.target.value
+    })
+  }
+
+  handleSearch = async (event) => {
+    const { list, input } = this.state
+    let body = {
+      input: input
+    }
+    let route = list.slice(0,3)
+    let response = await axios.put(`/search/${route}`, body)
+    this.setState({
+      list: ''
+    })
+    this.setState({
+      list: `${route}Search`,
+      searchResult: response.data.payload
+    })
   }
 
   showNew = () => {
     this.setState({
-      list: 'new'
+      list: 'new',
+      input: ''
     })
   }
 
   showReclaimed = () => {
     this.setState({
-      list: 'reclaimed'
+      list: 'reclaimed',
+      input: ''
     })
   }
 
   render() {
-    const { list } = this.state
+    const { list, input, searchResult } = this.state
     return (
       <div className='container'>
         <h1>Greenlist</h1>
         <br/>
-        <input type='text' placeholder='search'></input>
+        <div className='searchBar'>
+          <input onChange={this.handleInput} type='text' placeholder='search by material' value={input}></input>
+          <button onClick={this.handleSearch}>SEARCH</button>
+        </div>
         <br/>
         <button onClick={this.showNew}>NEW</button>
         <span> / </span>
         <button onClick={this.showReclaimed}>RECLAIMED</button>
-        { (list === 'reclaimed') ? <ReclaimedList/> : <NewList/> }
+        { (list === 'reclaimed') ? <ReclaimedList/> : <></>}
+        { (list === 'new') ? <NewList/> : <></>}
+        { (list === 'recSearch') ? <ReclaimedSearch searchResult={searchResult}/> : <></>}
+        { (list === 'newSearch') ? <NewSearch searchResult={searchResult}/> : <></>}
       </div>
     )
   }
