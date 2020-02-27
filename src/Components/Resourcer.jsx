@@ -55,9 +55,9 @@ class Resourcer extends React.Component {
       <div className='container'>
         <h1>Resourcer</h1>
         <div>
-          {resourcerInfo.map(el => {
+          {resourcerInfo.map((el, index) => {
             return (
-              <div>
+              <div key={index}>
                 <h3>{el.company}'s Contact Info</h3>
                 <img className='resourcerPic' src={el.avatar_url} alt="resourcer's avatar"></img>
                 <p className='resourcerInfo'>Company Name: {el.company}</p>

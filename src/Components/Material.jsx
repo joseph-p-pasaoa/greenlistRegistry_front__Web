@@ -14,7 +14,6 @@ class Material extends React.Component {
     await this.handleGetMaterialInfo()
   }
 
-
   async componentDidUpdate() {
     if (this.state.materialId !== this.props.match.params.id) {
       await this.handleGetMaterialInfo()
@@ -42,9 +41,9 @@ class Material extends React.Component {
       <div className='container'>
         <h1>Material</h1>
         <div className='materialCard'>{
-          materialInfo.map(info => {
+          materialInfo.map((info, index) => {
             return (
-              <div>
+              <div key={index}>
                 <p className='materialName'>{info.name}</p>
                 <img className='materialPic' src={info.photo_url} alt="hi-res descriptive look"></img>
                 <p className='materialDescription'>{info.description}</p>
