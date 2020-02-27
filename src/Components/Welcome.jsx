@@ -7,7 +7,8 @@ class Welcome extends React.Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      warning: false
     };
   }
 
@@ -28,11 +29,14 @@ class Welcome extends React.Component {
       this.props.history.push("/main");
     } catch (error) {
       console.log(error);
+      this.setState({
+        warning: true
+      });
     }
   };
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, warning } = this.state;
     return (
       <div className="container">
         <h1>Welcome</h1>
@@ -57,6 +61,11 @@ class Welcome extends React.Component {
         <Link to="/register">
           <button onClick={this.handleSignUp}>Sign Up</button>
         </Link>
+        {warning === true ? (
+          <p className="warning"> incorrect username or password</p>
+        ) : (
+          <p></p>
+        )}
       </div>
     );
   }
