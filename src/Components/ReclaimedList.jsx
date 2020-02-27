@@ -22,12 +22,13 @@ class ReclaimedList extends React.Component {
         <div className='creatorsList'>
           {creators.map((creator) => {
             let linkString = `/creator/${creator.id}`
+            let materialsString = creator.materials.join(', ')
             return (
               <Link to={linkString} key={creator.id}>
                 <div className='creatorItem'>
                   <p className='creatorName'>Creator: {creator.firstname} {creator.lastname}</p>
-                  <p className='creatorPosts'>Posts: needs join in DB</p>
-                  <p className='creatorMaterials'>Materials: needs join in DB</p>
+                  <p className='creatorPosts'>Posts: {creator.count}</p>
+                  <p className='creatorMaterials'>Materials: {materialsString}</p>
                 </div>
               </Link>
             )

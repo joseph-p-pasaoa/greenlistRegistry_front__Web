@@ -22,11 +22,12 @@ class NewList extends React.Component {
         <div className='resourcersList'>
           {resourcers.map((resourcer) => {
             let linkString = `/resourcer/${resourcer.id}`
+            let materialsString = resourcer.materials.join(', ')
             return (
               <Link to={linkString} key={resourcer.id}>
               <div className='resourcerItem'>
                 <p className='resourcerName'>{resourcer.company}</p>
-                <p className='resourcerMaterials'>Materials: needs join in DB</p>
+                <p className='resourcerMaterials'>Materials: {materialsString}</p>
               </div>
               </Link>
             )
