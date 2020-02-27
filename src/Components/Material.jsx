@@ -2,27 +2,33 @@ import React from 'react'
 import axios from 'axios'
 
 class Material extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
-      materialInfo: []
+      materialInfo: [],
+      materialId: null,
     }
-
   }
 
   async componentDidMount() {
     await this.handleGetMaterialInfo()
   }
 
-  async handleGetMaterialInfo() {
-    const { materialInfo } = this.state
-    let materialId = parseInt(this.props.match.params.id)
 
+  async componentDidUpdate() {
+    if (this.state.materialId !== this.props.match.params.id) {
+      await this.handleGetMaterialInfo()
+    }
+  }
+
+  async handleGetMaterialInfo() {
+    const materialId = this.props.match.params.id
     try {
       let getMaterialInfo = await axios.get(`/materials/${materialId}`)
       let getMaterialInfoData = getMaterialInfo.data.payload
       this.setState({
-        materialInfo: [...materialInfo, getMaterialInfoData]
+        materialInfo: [getMaterialInfoData],
+        materialId: materialId
       })
     } catch (err) {
       console.log('ERROR', err)
