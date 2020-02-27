@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Carousel from "react-bootstrap/Carousel";
+import "./creator.css"
+
+import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 
 class Creator extends React.Component {
   constructor() {
@@ -112,19 +116,24 @@ class Creator extends React.Component {
 
             {allReclaims.map(reclaim => {
               return (
-                <div>
-                  {reclaim.photo_url.map(picture => {
-                    return (
-                      <div>
-                        <img src={picture} alt="reclaim view"></img>
-                      </div>
-                    )
-                  })}
-                  <p className='reclaimedName'>name: {reclaim.name}</p>
-                  <p className='reclaimedlabel;'>{reclaim.quantity_label}</p>
-                  <p className='reclaimedBody'>{reclaim.body}</p>
-                  <p className='reclaimedQuantity'>Qty: {reclaim.quantity_num}</p>
-                  <p className='reclaimedComposition'>{reclaim.composition}</p>
+                <div  >
+                  <Carousel interval='1000000' >
+                    {reclaim.photo_url.map(picture => {
+                      return (
+                        <Carousel.Item >
+                          <div>
+                            <img className="reclaimedPic" className='d-block w-100  reclaimedPic' src={picture} alt="reclaim view"></img>
+                          </div>
+                        </Carousel.Item>
+                      )
+                    })}
+                  </Carousel>
+                  <div className='creatorInfo'>
+                    <p className='creatorName'>Name: {reclaim.name}</p>
+                    <p className='creatorLabel'> Qty: {reclaim.quantity_num} {reclaim.quantity_label}</p>
+                    <p className='creatorBody'>{reclaim.body}</p>
+                    <p className='creatorComposition'>Material(s): {reclaim.composition}</p>
+                  </div>
                 </div>
               )
             })

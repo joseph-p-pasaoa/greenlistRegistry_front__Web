@@ -1,0 +1,23 @@
+.btn-primary {
+    color: black; 
+    background-color: white; 
+   border-color: white;
+} 
+
+.navigationBar{
+    display: grid;
+    grid-template-columns: repeat(5,130px);
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dropdown-menu{
+  margin: 0px 0 0;
+}
+
+.show>.btn-primary.dropdown-toggle{
+  color: black;
+    background-color: white;
+    border-color: white;
+}

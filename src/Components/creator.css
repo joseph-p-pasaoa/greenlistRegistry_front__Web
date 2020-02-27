@@ -1,0 +1,30 @@
+.carousel .slide{
+  display: grid;
+  height:250px;
+  width: 250px;
+}
+
+
+.reclaimedCard{
+    display: grid;
+    height:300px;
+    width: 250px;  
+}
+
+.w-100{
+    height: 250px;
+}
+
+.carousel-indicators li{
+    border-bottom: 0px solid transparent;
+}
+
+.reclaimedInfo{
+    display: grid;
+    text-align: start;
+}
+
+
+
+
+
