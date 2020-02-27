@@ -10,7 +10,7 @@ class Creator extends React.Component {
   constructor() {
     super()
     this.state = {
-      creatorInfo: [],
+      creatorInfo: {},
       allReclaims: [],
     }
   }
