@@ -19,6 +19,7 @@ class Main extends React.Component {
   }
 
   handleSearch = async (event) => {
+    event.preventDefault()
     const { list, input } = this.state
     let body = {
       input: input
@@ -54,10 +55,10 @@ class Main extends React.Component {
       <div className='container'>
         <h1>Greenlist</h1>
         <br/>
-        <div className='searchBar'>
+        <form onSubmit={this.handleSearch} className='searchBar'>
           <input onChange={this.handleInput} type='text' placeholder='search by material' value={input}></input>
-          <button onClick={this.handleSearch}>SEARCH</button>
-        </div>
+          <button>SEARCH</button>
+        </form>
         <br/>
         <button onClick={this.showNew}>NEW</button>
         <span> / </span>
