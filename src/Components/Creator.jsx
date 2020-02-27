@@ -12,17 +12,13 @@ class Creator extends React.Component {
     this.state = {
       creatorInfo: [],
       allReclaims: [],
-      reclaimedData: [],
-      photos: []
     }
   }
-
 
   async componentDidMount() {
     await this.handleGetCreatorInfo()
     await this.handleGetReclaimedByID()
   }
-
 
   async handleGetCreatorInfo() {
     const { creatorInfo } = this.state
@@ -43,30 +39,8 @@ class Creator extends React.Component {
     try {
       let getReclaimed = await axios.get(`/reclaims/sellReclaimed/${creatorId}/false`, { id: creatorId, is_need: false })
       let getReclaimedData = getReclaimed.data.payload
-      let reclaims = []
-      let reclaimNames = {}
-      for (let object of getReclaimedData) {
-        if (!reclaimNames[object.name]) {
-          reclaimNames[object.name] = true
-          reclaims.push(object)
-        }
-      }
-      for (let reclaim of reclaims) {
-        for (let picture of getReclaimedData) {
-          if (picture.name === reclaim.name) {
-            if (typeof (reclaim.photo_url) === 'string') {
-              reclaim.photo_url = [picture.photo_url]
-            } else {
-              let photoArray = reclaim.photo_url
-              photoArray.push(picture.photo_url)
-              reclaim.photo_url = photoArray
-            }
-          }
-        }
-      }
       this.setState({
-        allReclaims: reclaims,
-        reclaimedData: getReclaimedData
+        allReclaims: getReclaimedData
       })
     } catch (err) {
       console.log('ERROR', err)
@@ -113,7 +87,6 @@ class Creator extends React.Component {
         <h3>Sustainable materials </h3>
         <div className='reclaimedContainer'>
           <div className='reclaimedCard'>
-
             {allReclaims.map(reclaim => {
               return (
                 <div  >
@@ -137,9 +110,7 @@ class Creator extends React.Component {
                 </div>
               )
             })
-
             }
-
           </div>
         </div>
       </div>
