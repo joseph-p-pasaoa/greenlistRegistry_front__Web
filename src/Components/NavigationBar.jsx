@@ -20,7 +20,7 @@ class NavigationBar extends React.Component {
 
   }
   async handleGetMaterials() {
-    const { allMaterials } = this.state
+    // const { allMaterials } = this.state
     try {
       let getMaterialInfo = await axios.get(`/materials`)
       let getMaterialInfoData = getMaterialInfo.data.payload
