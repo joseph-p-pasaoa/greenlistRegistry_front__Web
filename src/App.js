@@ -6,7 +6,8 @@ Client APP Main | Greenlist Registry (a full-stack sustainable material forum ap
 
 /* IMPORTS */
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
+
 import './App.css';
 import NavigationBar from './Components/NavigationBar'
 import Main from './Components/Main'
@@ -22,13 +23,31 @@ import Welcome from './Components/Welcome'
 /* MAIN */
 class App extends React.Component {
   state = {
-    id: 1
+    id: null,
+    username: null,
+    avatarUrl: null
+  }
+  initialState = {
+    id: null,
+    username: null,
+    avatarUrl: null
+  }
+
+  resetUser = () => {
+    this.setState(this.initialState);
+    this.props.history.push("/");
+  }
+
+  setUser = (id, username, avatarUrl) => {
+    this.setState({
+      id, username, avatarUrl
+    })
   }
 
   renderMain = () => {
     return (
       <>
-        <NavigationBar  loggedUser={this.state} />
+        <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
         <Main loggedUser={this.state}  />
       </>
     )
@@ -37,7 +56,7 @@ class App extends React.Component {
   renderResourcer = (routeProps) => {
     return (
       <>
-        <NavigationBar  loggedUser={this.state}/>
+        <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
         <Resourcer loggedUser={this.state} {...routeProps} />
       </>
     )
@@ -46,7 +65,7 @@ class App extends React.Component {
   renderMaterial = (routeProps) => {
     return (
       <>
-        <NavigationBar  loggedUser={this.state}/>
+        <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
         <Material loggedUser={this.state} {...routeProps} />
       </>
     )
@@ -55,7 +74,7 @@ class App extends React.Component {
   renderCreator = (routeProps) => {
     return (
       <>
-        <NavigationBar loggedUser={this.state} />
+        <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
         <Creator loggedUser={this.state} {...routeProps} />
       </>
     )
@@ -64,11 +83,20 @@ class App extends React.Component {
   renderReclaimedForm = () => {
     return (
       <>
-        <NavigationBar  loggedUser={this.state}/>
+        <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
         <ReclaimedForm loggedUser={this.state} />
       </>
     )
   }
+
+  renderWelcome = () => {
+    return (
+      <>
+        <Welcome setUser={this.setUser} />
+      </>
+    )
+  }
+
 
   render() {
     return (
@@ -80,11 +108,11 @@ class App extends React.Component {
           <Route path='/material/:id' render={this.renderMaterial} />
           <Route path='/creator/:id' render={this.renderCreator} />
           <Route path='/addReclaimed' render={this.renderReclaimedForm} />
-          <Route path='/' component={Welcome} />
+          <Route path='/' render={this.renderWelcome} />
         </Switch>
       </div>
     )
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
 class Welcome extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       username: "",
@@ -14,21 +14,30 @@ class Welcome extends React.Component {
 
   handleInput = event => {
     this.setState({
-      [event.target.name]: event.target.value,
-      [event.target.name]: event.target.value
+        [event.target.name]: event.target.value
     });
   };
 
-  submitForm = async event => {
+  submitForm = async (event) => {
     event.preventDefault();
-    let { username, password, id } = this.state;
+    const { username, password } = this.state;
     let payload = { username, password };
 
+    let response = null;
     try {
-      await axios.post("http://localhost:11500/creators/", payload);
-      this.props.history.push("/main");
+      response = await axios.post("http://localhost:11500/creators/auth", payload);
     } catch (error) {
       console.log(error);
+    }
+
+    if (response.data.status === "success") {
+      const { id, username, avatar_url } = response.data.payload;
+      this.setState({
+        warning: false
+      });
+      this.props.setUser(id, username, avatar_url);
+      this.props.history.push("/main");
+    } else {
       this.setState({
         warning: true
       });
@@ -48,24 +57,22 @@ class Welcome extends React.Component {
             onChange={this.handleInput}
             name="username"
             value={username}
-          ></input>
+          />
           <input
             type="text"
             placeholder="password"
             onChange={this.handleInput}
             name="password"
             value={password}
-          ></input>
+          />
+          <button onClick={this.submitForm}>Log In</button>
         </form>
-        <button onClick={this.submitForm}>Log In</button>
         <Link to="/register">
-          <button onClick={this.handleSignUp}>Sign Up</button>
+          New user? Click here to sign up!
         </Link>
-        {warning === true ? (
-          <p className="warning"> incorrect username or password</p>
-        ) : (
-          <p></p>
-        )}
+        <p className="warning">
+          {warning === true ? "incorrect username or password" : ""}
+        </p>
       </div>
     );
   }

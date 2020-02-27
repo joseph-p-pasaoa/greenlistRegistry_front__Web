@@ -8,7 +8,7 @@ import './NavigationBar.css'
 
 
 class NavigationBar extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       allMaterials: []
@@ -31,6 +31,8 @@ class NavigationBar extends React.Component {
       console.log('ERROR', err)
     }
   }
+
+
   render() {
     const { allMaterials } = this.state
     return (
@@ -48,7 +50,7 @@ class NavigationBar extends React.Component {
             })}
 
           </DropdownButton>
-          <Link to='/'>Log out</Link>{' '}
+          <Link onClick={this.props.resetUser}>Log out</Link>{' '}
         </div>
 
 
