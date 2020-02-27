@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Carousel from "react-bootstrap/Carousel";
+import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import "./creator.css"
 
-import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 
 class Creator extends React.Component {
   constructor() {
@@ -38,7 +38,7 @@ class Creator extends React.Component {
   }
 
   async handleGetReclaimedByID() {
-    const { allReclaims } = this.state
+    // const { allReclaims } = this.state
     let creatorId = this.props.match.params.id
     try {
       let getReclaimed = await axios.get(`/reclaims/sellReclaimed/${creatorId}/false`, { id: creatorId, is_need: false })
@@ -75,7 +75,7 @@ class Creator extends React.Component {
 
 
   render() {
-    const { creatorInfo, allReclaims, photos } = this.state
+    const { creatorInfo, allReclaims } = this.state
 
     return (
       <div className='container'>
@@ -122,7 +122,7 @@ class Creator extends React.Component {
                       return (
                         <Carousel.Item >
                           <div>
-                            <img className="reclaimedPic" className='d-block w-100  reclaimedPic' src={picture} alt="reclaim view"></img>
+                            <img className='d-block w-100 reclaimedPic' src={picture} alt="reclaim view"></img>
                           </div>
                         </Carousel.Item>
                       )

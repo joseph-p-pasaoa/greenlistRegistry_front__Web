@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -8,7 +8,7 @@ import './NavigationBar.css'
 
 
 class NavigationBar extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       allMaterials: []
@@ -20,7 +20,7 @@ class NavigationBar extends React.Component {
 
   }
   async handleGetMaterials() {
-    const { allMaterials } = this.state
+    // const { allMaterials } = this.state
     try {
       let getMaterialInfo = await axios.get(`/materials`)
       let getMaterialInfoData = getMaterialInfo.data.payload
@@ -31,8 +31,27 @@ class NavigationBar extends React.Component {
       console.log('ERROR', err)
     }
   }
+
+
   render() {
-    const { allMaterials } = this.state
+    // PRE-RETURN
+    const { allMaterials } = this.state;
+
+    let listDropdownItems = null;
+    if (allMaterials.length > 0) {
+      listDropdownItems = allMaterials.map(material => {
+        return (
+          <Dropdown.Item
+            key={material.id}
+            onClick={() => this.props.history.push(`/material/${parseInt(material.id)}`)}
+          >
+            {material.name}
+          </Dropdown.Item>
+        );
+      });
+    };
+    
+
     return (
       <div className='container'>
         <div className='navigationBar'>
@@ -41,14 +60,9 @@ class NavigationBar extends React.Component {
           <Link to='/addReclaimed'>Post reclaimed</Link>{' '}
 
           <DropdownButton id="dropdown-basic-button" title="Material">
-            {allMaterials.map(material => {
-              return (
-                <Dropdown.Item href={`/material/${parseInt(material.id)}`}>{material.name}</Dropdown.Item>
-              )
-            })}
-
+            {listDropdownItems}
           </DropdownButton>
-          <Link to='/'>Log out</Link>{' '}
+          <Link onClick={this.props.resetUser} to="/">Log out</Link>{' '}
         </div>
 
 
@@ -58,4 +72,4 @@ class NavigationBar extends React.Component {
   }
 }
 
-export default NavigationBar
+export default withRouter(NavigationBar);
