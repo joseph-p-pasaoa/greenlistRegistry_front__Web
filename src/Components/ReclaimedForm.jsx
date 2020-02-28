@@ -7,7 +7,7 @@ import './ReclaimedForm.css';
 
 class ReclaimedForm extends Component {
   state = {
-    isNeedSelect: false, 
+    isNeedSelect: false,
     titleTxt: "",
     compositionTxt: "",
     quantityNum: 1,
@@ -53,7 +53,7 @@ class ReclaimedForm extends Component {
       postBodyTxt,
       photoFiles
     } = this.state;
-    
+
     // input checks
     let errorsOutput = [];
     const errorRefs = [
@@ -178,6 +178,7 @@ class ReclaimedForm extends Component {
               onChange={this.handleChange}
             >
               <option value="default" autoFocus disabled>Choose unit type --</option>
+              <option value="units">units</option>
               <option value="lbs">lbs</option>
               <option value="oz">ounces</option>
               <option value="kgs">kgs</option>
