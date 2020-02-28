@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import './ReclaimedList.css'
 
 class ReclaimedList extends React.Component {
   state = {
@@ -22,13 +23,15 @@ class ReclaimedList extends React.Component {
         <div className='creatorsList'>
           {creators.map((creator) => {
             let linkString = `/creator/${creator.id}`
+            let creatorAvatarUrl = creator.avatar_url
             let materialsString = creator.materials.join(', ')
             return (
               <Link to={linkString} key={creator.id}>
-                <div className='creatorItem'>
-                  <p className='creatorName'>Creator: {creator.firstname} {creator.lastname}</p>
-                  <p className='creatorPosts'>Posts: {creator.count}</p>
-                  <p className='creatorMaterials'>Materials: {materialsString}</p>
+                <div className='creatorItemRL'>
+                <img className='creatorPicRL' src={creatorAvatarUrl} alt="Avatar Url"></img>
+                  <p className='creatorNameRL'>Creator: {creator.firstname} {creator.lastname}</p>
+                  <p className='creatorPostsRL'>Posts: {creator.count}</p>
+                  <p className='creatorMaterialsRL'>Materials: {materialsString}</p>
                 </div>
               </Link>
             )
