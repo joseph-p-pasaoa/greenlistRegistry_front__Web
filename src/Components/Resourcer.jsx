@@ -59,35 +59,35 @@ class Resourcer extends React.Component {
     return (
       <div className='container'>
         <h1>Resourcer</h1>
-     
-                <h3>{resourcerInfo.company}'s Contact Info</h3>
-                <img className='resourcerPic' src={resourcerInfo.avatar_url} alt="resourcer's avatar"></img>
-                <p className='resourcerInfo'>Company Name: {resourcerInfo.company}</p>
-                <p className='resourcerInfo'>About: {resourcerInfo.about}</p>
-                <p className='resourcerInfo'>Phone Number: {resourcerInfo.phone_number}</p>
-                <p className='resourcerInfo'>Email: {resourcerInfo.email}</p>
-                <p className='resourcerInfo'>Website: {resourcerInfo.website_url}</p>
-                <p className='resourcerInfo'>Address:{resourcerInfo.address}</p>
-                
-          <h3>New Materials</h3>
-          <div className='productsContainer'>
-            {productInfo.map(el => {
-              return (
-                <div>
-                  <Link to={`/material/${el.id}`}>
-                    <div className='productCard'>
-                      <img className='productPic' src={el.photo_url} alt="material"></img>
-                      <p className='productName'>{el.name}</p>
-                      <p className='productBody'>{el.body}</p>
-                    </div>
-                  </Link>
-                </div>
 
-              )
-            })}
+        <h3>{resourcerInfo.company}'s Contact Info</h3>
+        <img className='resourcerPic' src={resourcerInfo.avatar_url} alt="resourcer's avatar"></img>
+        <p className='resourcerInfo'>Company Name: {resourcerInfo.company}</p>
+        <p className='resourcerInfo'>About: {resourcerInfo.about}</p>
+        <p className='resourcerInfo'>Phone Number: {resourcerInfo.phone_number}</p>
+        <p className='resourcerInfo'>Email: {resourcerInfo.email}</p>
+        <p className='resourcerInfo'>Website: {resourcerInfo.website_url}</p>
+        <p className='resourcerInfo'>Address:{resourcerInfo.address}</p>
+        <h3>Sustainable Materials</h3>
+        <div className='productsContainer'>
+          {productInfo.map(el => {
+            return (
+              <div>
+                <Link to={`/material/${el.id}`}>
+                  <div className='productCard'>
+                    <img className='productPic' src={el.photo_url} alt="material"></img>
+                    <p className='productName'>Product Name: {el.name}</p>
+                    <p className='productName'>Product Material: {el.materials_name}</p>
+                    <p className='productBody'>Product Description: {el.body}</p>
+                  </div>
+                </Link>
+              </div>
 
-          </div>
+            )
+          })}
+
         </div>
+      </div>
 
     )
   }
