@@ -61,12 +61,17 @@ class Main extends React.Component {
         </form>
         <br/>
         <button onClick={this.showNew}>SUPPLIERS</button>
+
         <span> / </span>
+     
         <button onClick={this.showReclaimed}>RECLAIMED</button>
+        <span> / </span>
+        <button>REQUESTS</button>
         { (list === 'reclaimed') ? <ReclaimedList/> : <></>}
         { (list === 'new') ? <NewList/> : <></>}
         { (list === 'recSearch') ? <ReclaimedSearch searchResult={searchResult}/> : <></>}
         { (list === 'newSearch') ? <NewSearch searchResult={searchResult}/> : <></>}
+   
       </div>
     )
   }
