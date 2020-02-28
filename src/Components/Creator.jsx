@@ -85,7 +85,7 @@ class Creator extends React.Component {
           )
         }
 
-        <h3>Reclaimed Materials </h3>
+        <h3>Reclaimed Materials:</h3>
         <div className='reclaimedStage'>
           <div className='reclaimedContainer'>
             {allReclaims.map(reclaim => {
