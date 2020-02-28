@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import './NewList.css'
 
 class NewList extends React.Component {
   state = {
@@ -18,16 +19,20 @@ class NewList extends React.Component {
     const { resourcers } = this.state
     return (
       <div className='container'>
-        <h2>New</h2>
+        <h2>Suppliers</h2>
         <div className='resourcersList'>
           {resourcers.map((resourcer) => {
             let linkString = `/resourcer/${resourcer.id}`
+            let productsNameString = resourcer.productsname.join(', ')
             let materialsString = resourcer.materials.join(', ')
+            let resourcerAvatarUrl = resourcer.avatar_url
             return (
               <Link to={linkString} key={resourcer.id}>
               <div className='resourcerItem'>
-                <p className='resourcerName'>{resourcer.company}</p>
-                <p className='resourcerMaterials'>Materials: {materialsString}</p>
+              <img className='resourcerPicNL' src={resourcerAvatarUrl} alt="Avatar Url"></img>
+                <p className='resourcerNameNL'>{resourcer.company}</p>
+                <p className='resourcerProductNameNL'>Products Name: {productsNameString}</p>
+                <p className='resourcerMaterialsNL'>Materials: {materialsString}</p>
               </div>
               </Link>
             )
