@@ -24,6 +24,7 @@ class NewSearch extends React.Component {
             return (
               <Link to={linkString} key={resourcer.id}>
               <div className='resourcerItem'>
+                <img className='resourcerPicNL' src={resourcer.avatar_url} alt="Avatar Url"></img>
                 <p className='resourcerName'>{resourcer.company}</p>
                 <p className='resourcerMaterials'>Materials: {materialsString}</p>
               </div>

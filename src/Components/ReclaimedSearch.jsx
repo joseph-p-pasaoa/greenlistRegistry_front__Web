@@ -24,6 +24,7 @@ class ReclaimedSearch extends React.Component {
             return (
               <Link to={linkString} key={creator.id}>
                 <div className='creatorItem'>
+                  <img className='creatorPicRL' src={creator.avatar_url} alt="Avatar Url"></img>
                   <p className='creatorName'>Creator: {creator.firstname} {creator.lastname}</p>
                   <p className='creatorPosts'>Matching Posts: {creator.count}</p>
                   <p className='creatorMaterials'>Materials: {materialsString}</p>
