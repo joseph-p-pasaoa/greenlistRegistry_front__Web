@@ -67,7 +67,7 @@ class Resourcer extends React.Component {
         <p className='resourcerInfo'>Website: {resourcerInfo.website_url}</p>
         <p className='resourcerInfo'>Address:{resourcerInfo.address}</p>
 
-        <h3>Sustainable Materials</h3>
+        <h3>Sustainable Materials:</h3>
         <div className='productsContainer'>
 
           {productInfo.map(el => {

@@ -23,15 +23,13 @@ class NewList extends React.Component {
         <div className='resourcersList'>
           {resourcers.map((resourcer) => {
             let linkString = `/resourcer/${resourcer.id}`
-            let productsNameString = resourcer.productsname.join(', ')
             let materialsString = resourcer.materials.join(', ')
             let resourcerAvatarUrl = resourcer.avatar_url
             return (
               <Link to={linkString} key={resourcer.id}>
               <div className='resourcerItem'>
               <img className='resourcerPicNL' src={resourcerAvatarUrl} alt="Avatar Url"></img>
-                <p className='resourcerNameNL'>{resourcer.company}</p>
-                <p className='resourcerProductNameNL'>Products Name: {productsNameString}</p>
+                <p className='resourcerNameNL'>Company's Name: {resourcer.company}</p>
                 <p className='resourcerMaterialsNL'>Materials: {materialsString}</p>
               </div>
               </Link>
