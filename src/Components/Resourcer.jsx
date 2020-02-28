@@ -41,7 +41,6 @@ class Resourcer extends React.Component {
 
   async handleGetProductByID() {
     let resourcerId = parseInt(this.props.match.params.id)
-
     try {
       let getproductInfo = await axios.get(`/products/${resourcerId}`)
       let getproductInfoData = getproductInfo.data.payload
@@ -59,7 +58,6 @@ class Resourcer extends React.Component {
     return (
       <div className='container'>
         <h1>Resourcer</h1>
-
         <h3>{resourcerInfo.company}'s Contact Info</h3>
         <img className='resourcerPic' src={resourcerInfo.avatar_url} alt="resourcer's avatar"></img>
         <p className='resourcerInfo'>Company Name: {resourcerInfo.company}</p>
@@ -68,8 +66,10 @@ class Resourcer extends React.Component {
         <p className='resourcerInfo'>Email: {resourcerInfo.email}</p>
         <p className='resourcerInfo'>Website: {resourcerInfo.website_url}</p>
         <p className='resourcerInfo'>Address:{resourcerInfo.address}</p>
+
         <h3>Sustainable Materials</h3>
         <div className='productsContainer'>
+
           {productInfo.map(el => {
             return (
               <div>
@@ -82,13 +82,11 @@ class Resourcer extends React.Component {
                   </div>
                 </Link>
               </div>
-
             )
           })}
 
         </div>
       </div>
-
     )
   }
 }
