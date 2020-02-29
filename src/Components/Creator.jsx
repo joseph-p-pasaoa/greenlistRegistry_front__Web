@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Carousel from "react-bootstrap/Carousel";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
-import "./creator.css"
+import "./Creator.css"
 
 
 class Creator extends React.Component {
@@ -71,22 +71,28 @@ class Creator extends React.Component {
 
     return (
       <div className='container-stage'>
-        <h1>Creator</h1>
-        <div className='creatorCard'>
-          <h3>{creatorInfo.username}'s Contact Info</h3>
-          <img className='creatorPic' src={creatorInfo.avatar_url} alt="user avatar"></img>
-          <p className='creatorInfo'>First Name: {creatorInfo.firstname}</p>
-          <p className='creatorInfo'>Last Name: {creatorInfo.lastname}</p>
-          <p className='creatorInfo'>About: {creatorInfo.about}</p>
-          <p className='creatorInfo'>Phone Numbers: {creatorInfo.phone_number}</p>
-          <p className='creatorInfo'>Email: {creatorInfo.email}</p>
-          <p className='creatorInfo'>Website: {creatorInfo.website_url}</p>
-          <p className='creatorInfo'>Address: {creatorInfo.address}</p>
+        <div className='all-profiles center-this'>
+        <h1 className="profile--name">{creatorInfo.username}</h1>
+        <h4 className="sub--name">Creator / Designer Profile</h4>
+          <div className="container--profile-avatar j-flex-row">
+            <img className='profile-avatar' src={creatorInfo.avatar_url} alt="user avatar"></img>
+            <div className="profile-info">
+              <p className='creator-Info'><strong>First Name:</strong><br />{creatorInfo.firstname}</p>
+              <p className='creator-Info'><strong>Last Name:</strong><br />{creatorInfo.lastname}</p>
+              <p className='creator-Info'><strong>About:</strong><br />{creatorInfo.about}</p>
+              <p className='creator-Info'><strong>Phone Numbers:</strong><br />{creatorInfo.phone_number}</p>
+              <p className='creator-Info'><strong>Email:</strong><br />{creatorInfo.email}</p>
+              <p className='creator-Info'><strong>Website:</strong><br />{creatorInfo.website_url}</p>
+              <p className='creator-Info'><strong>Address:</strong><br />{creatorInfo.address}</p>
+            </div>
+          </div>
         </div>
+
+        <div className="profile-add--button">
         {this.props.loggedUser.id === this.props.match.params.id ? (
-          <div>
+          <div className="j-form">
             <Link to='/addReclaimed'>
-              <button>add Reclaim</button>
+              <button>Post New Reclaim</button>
             </Link>
           </div>
         ) : (
@@ -94,9 +100,10 @@ class Creator extends React.Component {
             </div>
           )
         }
+        </div>
 
-        <h3>Reclaimed Materials:</h3>
-        <div className='reclaimedStage'>
+        <div className='reclaimedStage center-this'>
+        <h5>Reclaimed Materials:</h5>
           <div className='reclaimedContainer'>
             {allReclaims.map(reclaim => { 
               const reclaimId = reclaim.id
