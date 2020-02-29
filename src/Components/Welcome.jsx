@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import About from './About'
 import axios from "axios";
+
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -74,6 +76,7 @@ class Welcome extends React.Component {
         <p className="warning">
           {warning === true ? "incorrect username or password" : ""}
         </p>
+        <About/>
       </div>
     );
   }
