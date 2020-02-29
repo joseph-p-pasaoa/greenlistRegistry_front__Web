@@ -8,7 +8,9 @@ Client APP Main | Greenlist Registry (a full-stack sustainable material forum ap
 import React from 'react'
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
 
+import './reset.css';
 import './App.css';
+
 import NavigationBar from './Components/NavigationBar'
 import Main from './Components/Main'
 import RegisterForm from './Components/RegisterForm'
@@ -17,7 +19,6 @@ import Material from './Components/Material'
 import Creator from './Components/Creator'
 import ReclaimedForm from './Components/ReclaimedForm'
 import Welcome from './Components/Welcome'
-
 
 
 /* MAIN */
@@ -154,7 +155,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <Switch>
           <Route path='/register' render={this.renderRegisterForm} />
           <Route path='/main' render={this.renderMain} />
@@ -168,5 +169,6 @@ class App extends React.Component {
     )
   }
 }
+
 
 export default withRouter(App);

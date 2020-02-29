@@ -70,7 +70,7 @@ class Creator extends React.Component {
     const { creatorInfo, allReclaims } = this.state
 
     return (
-      <div className='container'>
+      <div className='container-stage'>
         <h1>Creator</h1>
         <div className='creatorCard'>
           <h3>{creatorInfo.username}'s Contact Info</h3>
