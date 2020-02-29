@@ -20,6 +20,8 @@ class Creator extends React.Component {
     await this.handleGetReclaimedByID()
   }
 
+
+
   async handleGetCreatorInfo() {
     try {
       let getCreatorInfo = await axios.get(`/creators/${this.props.match.params.id}`)
@@ -55,6 +57,14 @@ class Creator extends React.Component {
     }
   }
 
+  async handleDeleteReclaimed(reclaimed_Id) {
+    try{
+    await axios.delete(`/reclaims/delete/${reclaimed_Id}`)
+    this.handleGetReclaimedByID()
+    }catch(err){
+      console.log("ERROR", err)
+    }
+  }
 
   render() {
     const { creatorInfo, allReclaims } = this.state
@@ -88,11 +98,13 @@ class Creator extends React.Component {
         <h3>Reclaimed Materials:</h3>
         <div className='reclaimedStage'>
           <div className='reclaimedContainer'>
-            {allReclaims.map(reclaim => {
+            {allReclaims.map(reclaim => { 
+              const reclaimId = reclaim.id
+
               return (
-                <div className="reclaimedCard" >
+                <div className="reclaimedCard" key={reclaimId}>
                   <Carousel interval={null} wrap={false} >
-                    {reclaim.photo_url.map(picture => {
+                    {reclaim.photo_url.map((picture) => {
                       return (
                         <Carousel.Item >
                           <div>
@@ -103,10 +115,22 @@ class Creator extends React.Component {
                     })}
                   </Carousel>
                   <div className='reclaimedInfo'>
+
                     <p className='reclaimedName'>Name: {reclaim.name}</p>
                     <p className='reclaimedComposition'>Material(s): {reclaim.composition}</p>
                     <p className='reclaimedLabel'> Qty: {reclaim.quantity_num} {reclaim.quantity_label}</p>
                     <p className='reclaimedBody'>{reclaim.body}</p>
+                    {this.props.loggedUser.id === this.props.match.params.id ? (
+                      <div>
+                        <div>
+                          <button onClick = {() => { this.handleDeleteReclaimed(reclaimId) }}>Delete</button>
+                        </div>
+                      </div>
+                    ) : (
+                        <div>
+                        </div>
+                      )
+                    }
                   </div>
                 </div>
               )
