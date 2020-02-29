@@ -18,21 +18,25 @@ class NewList extends React.Component {
   render() {
     const { resourcers } = this.state
     return (
-      <div className='container'>
-        <h2>Suppliers</h2>
+      <div className='main-list'>
+        <h2>Material Suppliers</h2>
         <div className='resourcersList'>
           {resourcers.map((resourcer) => {
             let linkString = `/resourcer/${resourcer.id}`
             let materialsString = resourcer.materials.join(', ')
             let resourcerAvatarUrl = resourcer.avatar_url
             return (
-              <Link to={linkString} key={resourcer.id}>
-              <div className='resourcerItem'>
-              <img className='resourcerPicNL' src={resourcerAvatarUrl} alt="Avatar Url"></img>
-                <p className='resourcerNameNL'>Company's Name: {resourcer.company}</p>
-                <p className='resourcerMaterialsNL'>Materials: {materialsString}</p>
-              </div>
+
+              <Link to={linkString} key={resourcer.id} className="j-card">
+                <div className='all--card j-flex-row'>
+                  <div>
+                    <h3 className='resourcer--name'>{resourcer.company}</h3>
+                    <img className='resourcer--avatar' src={resourcerAvatarUrl} alt="Avatar Url"></img>
+                  </div>
+                  <p className='resourcer--materials'><strong>Materials:</strong><br />{materialsString}</p>
+                </div>
               </Link>
+
             )
           })}
         </div>
