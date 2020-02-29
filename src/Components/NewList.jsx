@@ -19,7 +19,7 @@ class NewList extends React.Component {
     const { resourcers } = this.state
     return (
       <div className='main-list'>
-        <h2>Material Suppliers</h2>
+        <h2>Suppliers</h2>
         <div className='resourcersList'>
           {resourcers.map((resourcer) => {
             let linkString = `/resourcer/${resourcer.id}`

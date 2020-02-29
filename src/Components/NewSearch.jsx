@@ -15,20 +15,22 @@ class NewSearch extends React.Component {
   render() {
     const { resourcers } = this.state
     return (
-      <div className='container'>
+      <div className='main-list'>
         <h2>New</h2>
         <div className='resourcersList'>
           {resourcers.map((resourcer) => {
             let linkString = `/resourcer/${resourcer.id}`
             let materialsString = resourcer.materials.join(', ')
             return (
-              <Link to={linkString} key={resourcer.id}>
-              <div className='resourcerItem'>
-                <img className='resourcerPicNL' src={resourcer.avatar_url} alt="Avatar Url"></img>
-                <p className='resourcerName'>{resourcer.company}</p>
-                <p className='resourcerMaterials'>Materials: {materialsString}</p>
+              <Link to={linkString} key={resourcer.id} className="j-card">
+              <div className='all--card j-flex-row'>
+                <div>
+                  <h3 className='card--name'>{resourcer.company}</h3>
+                  <img className='resourcer--avatar' src={resourcer.avatar_url} alt="Avatar Url"></img>
+                </div>
+                <p className='resourcer--materials'><strong>Materials:</strong><br />{materialsString}</p>
               </div>
-              </Link>
+            </Link>
             )
           })}
         </div>
