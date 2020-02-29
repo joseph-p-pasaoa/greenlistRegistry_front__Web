@@ -47,6 +47,22 @@ class Material extends React.Component {
                 <p className='materialName'>{info.name}</p>
                 <img className='materialPic' src={info.photo_url} alt="hi-res descriptive look"></img>
                 <p className='materialDescription'>{info.description}</p>
+                <br/>
+                <div className='benefits'>
+                  <p className='benefitsTitle'>Benefits</p>
+                  <br/>
+                  <div className='socialBenefit'>
+                    <p className='benefitsBody'>{info.socialbenefit}</p>
+                  </div>
+                  <br/>
+                  <div className='environmentBenefit'>
+                    <p className='benefitsBody'>{info.environmentbenefit}</p>
+                  </div>
+                  <br/>
+                  <div className='costBenefit'>
+                    <p className='benefitsBody'>{info.costbenefit}</p>
+                  </div>
+                </div>
               </div>
             )
           })
