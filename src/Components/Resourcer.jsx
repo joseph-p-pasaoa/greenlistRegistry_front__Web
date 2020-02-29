@@ -69,10 +69,9 @@ class Resourcer extends React.Component {
 
         <h3>Sustainable Materials:</h3>
         <div className='productsContainer'>
-
           {productInfo.map(el => {
             return (
-              <div>
+              <div key ={el.id}>
                 <Link to={`/material/${el.id}`}>
                   <div className='productCard'>
                     <img className='productPic' src={el.photo_url} alt="material"></img>
