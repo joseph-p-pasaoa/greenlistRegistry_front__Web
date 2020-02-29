@@ -1,0 +1,11 @@
+/* .resourcer--avatar {
+    height: 200px;
+} */
+
+.productPic {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-left: auto;
+    border-radius: 5px;
+}

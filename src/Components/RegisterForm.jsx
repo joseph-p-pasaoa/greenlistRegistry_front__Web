@@ -72,90 +72,92 @@ class RegisterForm extends React.Component {
   render() {
     return (
       <div className="container-stage">
-        <h1>Register Form</h1>
-        <br />
-        <Link to="/">
-          Already have an account? Click here to login.
-        </Link>
-        <form onSubmit={this.submitForm} encType="multipart/form-data">
-          <input
-            type="text"
-            placeholder="Username"
-            name="username"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="First Name"
-            name="firstname"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="Last Name"
-            name="lastname"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="Password"
-            name="password"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="Phone Number"
-            name="phone_number"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="About"
-            name="about"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="Website URL (optional)"
-            name="website_url"
-            onChange={this.handleInputs}
-          />
-
-          <input
-            type="text"
-            placeholder="Address (optional)"
-            name="address"
-            onChange={this.handleInputs}
-          />
-
-          {/* file input */}
-          <label>Upload Avatar
+        <div className="center-this">
+          <h1>Register Form</h1>
+          <br />
+          <Link to="/">
+            Already have an account? Click here to login.
+          </Link>
+          <form onSubmit={this.submitForm} encType="multipart/form-data">
             <input
-              type="file"
-              accept="image/*"
-              onInput={this.handleFileInput}
-              onChange={e => e.target.value}
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={this.handleInputs}
             />
-          </label>
 
-          <button>Sign Up</button>
-        </form>
-        <p className="warning">
-          {this.state.warning === true ? "Invalid inputs. Please fill out the fields correctly and try again" : ""}
-        </p>
+            <input
+              type="text"
+              placeholder="First Name"
+              name="firstname"
+              onChange={this.handleInputs}
+            />
+
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lastname"
+              onChange={this.handleInputs}
+            />
+
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              onChange={this.handleInputs}
+            />
+
+            <input
+              type="text"
+              placeholder="Password"
+              name="password"
+              onChange={this.handleInputs}
+            />
+
+            <input
+              type="text"
+              placeholder="Phone Number"
+              name="phone_number"
+              onChange={this.handleInputs}
+            />
+
+            <input
+              type="text"
+              placeholder="About"
+              name="about"
+              onChange={this.handleInputs}
+            />
+
+            <input
+              type="text"
+              placeholder="Website URL (optional)"
+              name="website_url"
+              onChange={this.handleInputs}
+            />
+
+            <input
+              type="text"
+              placeholder="Address (optional)"
+              name="address"
+              onChange={this.handleInputs}
+            />
+
+            {/* file input */}
+            <label>Upload Avatar
+              <input
+                type="file"
+                accept="image/*"
+                onInput={this.handleFileInput}
+                onChange={e => e.target.value}
+              />
+            </label>
+
+            <button>Sign Up</button>
+          </form>
+          <p className="warning">
+            {this.state.warning === true ? "Invalid inputs. Please fill out the fields correctly and try again" : ""}
+          </p>
+        </div>
       </div>
     );
   }

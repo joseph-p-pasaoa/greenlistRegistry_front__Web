@@ -122,23 +122,20 @@ class Creator extends React.Component {
                     })}
                   </Carousel>
                   <div className='reclaimedInfo'>
-
                     <p className='reclaimedName'>Name: {reclaim.name}</p>
                     <p className='reclaimedComposition'>Material(s): {reclaim.composition}</p>
                     <p className='reclaimedLabel'> Qty: {reclaim.quantity_num} {reclaim.quantity_label}</p>
                     <p className='reclaimedBody'>{reclaim.body}</p>
-                    {this.props.loggedUser.id === this.props.match.params.id ? (
-                      <div>
-                        <div>
-                          <button onClick = {() => { this.handleDeleteReclaimed(reclaimId) }}>Delete</button>
-                        </div>
-                      </div>
-                    ) : (
-                        <div>
-                        </div>
-                      )
-                    }
                   </div>
+                  {this.props.loggedUser.id === this.props.match.params.id ? (
+                      <div className="j-form j-flex-row reclaim-delete">
+                        <button onClick = {() => { this.handleDeleteReclaimed(reclaimId) }}>Delete</button>
+                      </div>
+                  ) : (
+                      <div>
+                      </div>
+                    )
+                  }
                 </div>
               )
             })
