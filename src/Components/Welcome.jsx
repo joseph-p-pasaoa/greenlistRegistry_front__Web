@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+const logo = require('../assets/images/logo_200228.png');
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -46,8 +47,9 @@ class Welcome extends React.Component {
   render() {
     const { username, password, warning } = this.state;
     return (
-      <div className="container">
-        <h1>Welcome</h1>
+      <div className="welcome">
+        <h1>Welcome to</h1>
+        <img src={logo} className="landing-logo" alt="Greenlist"/>
         <br />
         <form onSubmit={this.submitForm}>
           <label htmlFor="username">Username:</label>

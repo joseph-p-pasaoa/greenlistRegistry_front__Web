@@ -103,7 +103,7 @@ class Creator extends React.Component {
         </div>
 
         <div className='reclaimedStage center-this'>
-        <h5>Reclaimed Materials:</h5>
+        <h5>{creatorInfo.username}'s Reclaim Posts</h5>
           <div className='reclaimedContainer'>
             {allReclaims.map(reclaim => { 
               const reclaimId = reclaim.id

@@ -128,6 +128,15 @@ body {
   grid-template-rows: 150px auto;
 }
 
+.welcome {
+  text-align: center;
+}
+
+.landing-logo {
+  width: 400px;
+  margin: 11px auto;
+}
+
 .container-stage {
   overflow-y: auto;
 }

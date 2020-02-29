@@ -33,12 +33,14 @@
 
 .profile-avatar {
     width: 300px;
+    height: 300px;
     object-fit: cover;
     margin-left: auto;
+    border-radius: 5px;
 }
 
 .profile-info {
-    margin: 22px 3px 3px 22px;
+    margin: 22px 25px 3px 22px;
     position: relative;
     left: 22px;
 }
