@@ -118,7 +118,7 @@ class ReclaimedForm extends Component {
     const { titleTxt, compositionTxt, quantityNum, quantityLabelSelect, postBodyTxt, errorMsg } = this.state;
 
     return (
-      <div className="container">
+      <div className="container-stage">
         <h1>Reclaimed Form</h1>
         <form
           onSubmit={this.handleSubmit}

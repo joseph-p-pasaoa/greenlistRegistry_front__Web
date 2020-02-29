@@ -4,17 +4,69 @@ Client APP CSS | Greenlist Registry (a full-stack sustainable material forum app
 */
 
 
+/* FONT INITS 
+font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Reem Kufi', sans-serif;
+*/
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Catamaran';
+  src: url('./assets/fonts/Catamaran/Catamaran-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+/* @font-face {
+  font-family: 'Montez';
+  src: url('./assets/fonts/Montez/Montez-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+
+/* POST-RESET SETUP */
 * {
+  padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
 }
 
+html, body, div#root, .App {
+  height: 100%;
+  width: 100%;
+}
 
 ul, li {
   list-style: none;
 }
 
+strong {
+  font-weight: bold;
+}
 
-.flex-column {
+em {
+  font-style: italic;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Catamaran", sans-serif;
+  font-weight: 900;
+}
+
+
+/* HELPERS */
+.j-flex-column {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -22,7 +74,7 @@ ul, li {
   align-items: flex-start;
 }
 
-.flex-row {
+.j-flex-row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -30,10 +82,36 @@ ul, li {
   align-items: flex-start;
 }
 
-strong {
-  font-weight: bold;
+
+/* MAIN BUILD */
+body, p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9em;
+}
+
+body {
+  position: fixed;
+  background: rgb(250,250,250);
+  background: linear-gradient(180deg, rgba(250,250,250,1) 5%, rgba(255,255,254,1) 5%, rgba(197,219,152,1) 100%);
 }
 
 .App {
-  text-align: center;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px auto;
+}
+
+.container-stage {
+  overflow-y: auto;
+}
+
+.container-centering {
+  width: 725px;
+  margin: 0px auto;
+}
+
+.container-stage {
+  grid-row: 2;
 }

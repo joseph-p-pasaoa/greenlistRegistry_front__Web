@@ -56,7 +56,7 @@ class Resourcer extends React.Component {
   render() {
     const { resourcerInfo, productInfo } = this.state
     return (
-      <div className='container'>
+      <div className='container-stage'>
         <h1>Resourcer</h1>
         <h3>{resourcerInfo.company}'s Contact Info</h3>
         <img className='resourcerPic' src={resourcerInfo.avatar_url} alt="resourcer's avatar"></img>

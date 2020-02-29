@@ -52,7 +52,7 @@ class Main extends React.Component {
   render() {
     const { list, input, searchResult } = this.state
     return (
-      <div className='container'>
+      <div className='container-stage'>
         <h1>Greenlist</h1>
         <br/>
         <form onSubmit={this.handleSearch} className='searchBar'>

@@ -38,7 +38,7 @@ class Material extends React.Component {
   render() {
     const { materialInfo } = this.state
     return (
-      <div className='container'>
+      <div className='container-stage'>
         <h1>Material</h1>
         <div className='materialCard'>{
           materialInfo.map((info, index) => {

@@ -71,7 +71,7 @@ class RegisterForm extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-stage">
         <h1>Register Form</h1>
         <br />
         <Link to="/">
