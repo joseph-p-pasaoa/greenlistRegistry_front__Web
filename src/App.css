@@ -22,8 +22,8 @@ font-family: 'Reem Kufi', sans-serif;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Catamaran';
-  src: url('./assets/fonts/Catamaran/Catamaran-Black.ttf') format('truetype');
+  font-family: 'Raleway';
+  src: url('./assets/fonts/Raleway/Raleway-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
 }

@@ -1,9 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import axios from 'axios'
+
+import './Main.css';
 import NewList from './NewList'
 import NewSearch from './NewSearch'
 import ReclaimedList from './ReclaimedList'
 import ReclaimedSearch from './ReclaimedSearch'
-import axios from 'axios'
 
 class Main extends React.Component {
   state = {
@@ -49,29 +52,60 @@ class Main extends React.Component {
     })
   }
 
-  render() {
-    const { list, input, searchResult } = this.state
-    return (
-      <div className='container-stage'>
-        <h1>Greenlist</h1>
-        <br/>
-        <form onSubmit={this.handleSearch} className='searchBar'>
-          <input onChange={this.handleInput} type='text' placeholder='search by material' value={input}></input>
-          <button>SEARCH</button>
-        </form>
-        <br/>
-        <button onClick={this.showNew}>SUPPLIERS</button>
+  showRequests = () => {
+    this.setState({
+      list: 'requests',
+      input: ''
+    })
+  }
 
+  render() {
+    const { list, input, searchResult } = this.state;
+
+    // sub navbar sys
+    let
+      subNavSuppliers = null,
+      subNavReclaimed = null,
+      subNavRequests = null;
+    switch (list) {
+      case "new":
+      case "newSearch":
+        subNavSuppliers = {color: "#fff", textShadow: "1px 1px 4px #252525"}; break;
+      case "reclaimed":
+      case "recSearch":
+        subNavReclaimed = {color: "#fff", textShadow: "1px 1px 4px #252525"}; break;
+      default:
+        subNavRequests = {color: "#fff", textShadow: "1px 1px 4px #252525"}; break;
+    }
+
+
+    return (
+      <div className='container-stage main-stage-grid'>
+        <div className="sub-bar j-flex-column container-navbar">
+          <ul className='j-main-subnav j-flex-row'>
+            <Link to='/main' onClick={this.showNew}><li style={subNavSuppliers}>Suppliers</li></Link>
+            <Link to='/main' onClick={this.showReclaimed}><li style={subNavReclaimed}>Reclaimed</li></Link>
+            <Link to='/main' onClick={this.showRequests}><li style={subNavRequests}>Your Requests</li></Link>
+          </ul>
+          <form onSubmit={this.handleSearch} className='searchBar'>
+            <input onChange={this.handleInput} type='text' placeholder='search by material' value={input}></input>
+            <button>SEARCH</button>
+          </form>
+        </div>
+
+        {/* <button onClick={this.showNew}>SUPPLIERS</button>
         <span> / </span>
-     
         <button onClick={this.showReclaimed}>RECLAIMED</button>
         <span> / </span>
-        <button>REQUESTS</button>
-        { (list === 'reclaimed') ? <ReclaimedList/> : <></>}
-        { (list === 'new') ? <NewList/> : <></>}
-        { (list === 'recSearch') ? <ReclaimedSearch searchResult={searchResult}/> : <></>}
-        { (list === 'newSearch') ? <NewSearch searchResult={searchResult}/> : <></>}
-   
+        <button>REQUESTS</button> */}
+        <div className="main-results">
+          { (list === 'reclaimed') ? <ReclaimedList/> : <></>}
+          { (list === 'new') ? <NewList/> : <></>}
+          { (list === 'recSearch') ? <ReclaimedSearch searchResult={searchResult}/> : <></>}
+          { (list === 'newSearch') ? <NewSearch searchResult={searchResult}/> : <></>}
+          { (list === 'requests') ? <></> : <></>}
+        </div>
+
       </div>
     )
   }
