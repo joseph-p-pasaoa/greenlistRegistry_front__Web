@@ -65,8 +65,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 { /* SECTION TITLES */
-  font-size: 1.3em;
+  font-size: 1.8em;
   margin: 2px 3px 22px 0px;
+}
+
+h3.card--name {
+  font-size: 1.3em;
+  color: #fff;
+  text-shadow: 0px 2px 3px #000;
 }
 
 
