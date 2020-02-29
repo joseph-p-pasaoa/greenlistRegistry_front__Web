@@ -106,8 +106,8 @@ class Creator extends React.Component {
                   <Carousel interval={null} wrap={false} >
                     {reclaim.photo_url.map((picture) => {
                       return (
-                        <Carousel.Item >
-                          <div key ={picture}>
+                        <Carousel.Item key={picture} >
+                          <div >
                             <img className='d-block w-100' src={picture} alt="reclaim view"></img>
                           </div>
                         </Carousel.Item>
