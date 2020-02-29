@@ -119,95 +119,101 @@ class ReclaimedForm extends Component {
 
     return (
       <div className="container-stage">
-        <h1>Reclaimed Form</h1>
+
+        <h1>New Reclaimed Post</h1>
+
         <form
           onSubmit={this.handleSubmit}
-          className="form--addreclaim flex-column"
+          className="j-form flex-column add-reclaim"
           encType="multipart/form-data"
         >
 
           {/* title input */}
-          <div className="form-row flex-row">
+          {/* <div className="form-row flex-row"> */}
             <label htmlFor="titleTxt">Post Title:</label>
             <input
               type="text"
               name="titleTxt"
               id="titleTxt"
               placeholder="Start with a title"
-              className="input-title"
+              className="input-title el-box"
               ref={this.refTitleInput}
               value={titleTxt}
               onChange={this.handleChange}
             />
-          </div>
+          {/* </div> */}
 
           {/* fabric input */}
-          <div className="form-row flex-row">
+          {/* <div className="form-row flex-row"> */}
             <label htmlFor="compositionTxt">Fabric:</label>
             <input
               type="text"
               name="compositionTxt"
               id="compositionTxt"
               placeholder="What fabric do you have?"
-              className="input-composition"
+              className="input-composition el-box"
               ref={this.refCompositionInput}
               value={compositionTxt}
               onChange={this.handleChange}
             />
-          </div>
+          {/* </div> */}
 
           {/* amount input */}
-          <div className="form-row flex-row">
+          {/* <div className="form-row flex-row"> */}
             <label htmlFor="quantityNum">Amount Available:</label>
-            <input
-              type="number"
-              name="quantityNum"
-              id="quantityNum"
-              placeholder="10"
-              min="1"
-              className="input-quantity-num"
-              ref={this.refQuantityInput}
-              value={quantityNum}
-              onChange={this.handleChange}
-            />
-            <select
-              id="quantityLabelSelect"
-              name="quantityLabelSelect"
-              ref={this.refQuantityLabel}
-              value={quantityLabelSelect}
-              onChange={this.handleChange}
-            >
-              <option value="default" autoFocus disabled>Choose unit type --</option>
-              <option value="units">units</option>
-              <option value="lbs">lbs</option>
-              <option value="oz">ounces</option>
-              <option value="kgs">kgs</option>
-              <option value="grams">grams</option>
-            </select>
-          </div>
+            <div className="form-row flex-row el-box">
+              <input
+                type="number"
+                name="quantityNum"
+                id="quantityNum"
+                placeholder="10"
+                min="1"
+                className="input-quantity-num"
+                ref={this.refQuantityInput}
+                value={quantityNum}
+                onChange={this.handleChange}
+              />
+              <select
+                id="quantityLabelSelect"
+                name="quantityLabelSelect"
+                ref={this.refQuantityLabel}
+                value={quantityLabelSelect}
+                onChange={this.handleChange}
+              >
+                <option value="default" autoFocus disabled>Choose unit type --</option>
+                <option value="units">units</option>
+                <option value="lbs">lbs</option>
+                <option value="oz">ounces</option>
+                <option value="kgs">kgs</option>
+                <option value="grams">grams</option>
+              </select>
+            </div>
+          {/* </div> */}
 
           {/* body input */}
-          <div className="form-row flex-row">
+          {/* <div className="form-row flex-row"> */}
             <label htmlFor="postBodyTxt">Post Body:</label>
             <textarea
               type="text"
               name="postBodyTxt"
               id="postBodyTxt"
               placeholder="Tell everyone more about your fabrics to reclaim"
-              className="input-body"
+              className="input-body el-box"
               ref={this.refBodyInput}
               value={postBodyTxt}
               onChange={this.handleChange}
             />
-          </div>
+          {/* </div> */}
 
           {/* file input */}
+          <label>Upload Images:</label>
           <input
             type="file"
             accept="image/*"
             ref={this.refFileInput}
             onInput={this.handleFileInput}
             onChange={e => e.target.value}
+            className="el-box"
             multiple
           />
 

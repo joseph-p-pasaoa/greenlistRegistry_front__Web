@@ -115,3 +115,51 @@ body {
 .container-stage {
   grid-row: 2;
 }
+
+.center-this {
+  margin: 0px auto;
+  width: 725px;
+}
+
+/* FORMS & INPUTS */
+.j-form {
+  align-items: flex-end;
+  display: grid;
+
+  margin: 0 auto;
+  width: 100%;
+}
+
+.j-form .form-row {
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 11px;
+}
+
+.j-form button {
+  /* margin-top: 11px; */
+  height: 100%;
+  border-radius: 5px;
+  min-height: 32px;
+}
+
+.j-form input, .j-form select, .j-form textarea {
+  margin-left: 2%;
+}
+
+.j-form input[type="text"], .j-form input[type="number"], .j-form select {
+  line-height: 1.6em;
+}
+
+.j-form input, .j-form textarea {
+  border-radius: 5px;
+  border-style: inset;
+  border-width: 2px;
+  padding: 2px 6px;
+  font-size: 1em;
+}
+
+.j-form textarea {
+  margin-bottom: 9px;
+  padding-top: 7px;
+}

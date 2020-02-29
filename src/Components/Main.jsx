@@ -87,7 +87,7 @@ class Main extends React.Component {
             <Link to='/main' onClick={this.showReclaimed}><li style={subNavReclaimed}>Reclaimed</li></Link>
             <Link to='/main' onClick={this.showRequests}><li style={subNavRequests}>Your Requests</li></Link>
           </ul>
-          <form onSubmit={this.handleSearch} className='searchBar'>
+          <form onSubmit={this.handleSearch} className='j-form searchBar'>
             <input onChange={this.handleInput} type='text' placeholder='search by material' value={input}></input>
             <button>SEARCH</button>
           </form>
@@ -99,11 +99,13 @@ class Main extends React.Component {
         <span> / </span>
         <button>REQUESTS</button> */}
         <div className="main-results">
-          { (list === 'reclaimed') ? <ReclaimedList/> : <></>}
-          { (list === 'new') ? <NewList/> : <></>}
-          { (list === 'recSearch') ? <ReclaimedSearch searchResult={searchResult}/> : <></>}
-          { (list === 'newSearch') ? <NewSearch searchResult={searchResult}/> : <></>}
-          { (list === 'requests') ? <></> : <></>}
+          <div className="center-this">
+            { (list === 'reclaimed') ? <ReclaimedList/> : <></>}
+            { (list === 'new') ? <NewList/> : <></>}
+            { (list === 'recSearch') ? <ReclaimedSearch searchResult={searchResult}/> : <></>}
+            { (list === 'newSearch') ? <NewSearch searchResult={searchResult}/> : <></>}
+            { (list === 'requests') ? <></> : <></>}
+          </div>
         </div>
 
       </div>

@@ -6,7 +6,7 @@
 
 .main-stage-grid {
     display: grid;
-    grid-template-rows: 81px auto;
+    grid-template-rows: 88px auto;
     grid-template-columns: 1fr;
 }
 
@@ -33,13 +33,13 @@
 }
 
 form.searchBar {
-    width: 100%;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto 130px;
     padding: 11px 60px;
 }
 
 .searchBar input[type="text"] {
-    width: 450px;
-    margin-bottom: 6px;
+    margin-right: 11px;
 }
 
 .main-results {
