@@ -73,7 +73,7 @@ class Creator extends React.Component {
           <p className='creatorInfo'>Website: {creatorInfo.website_url}</p>
           <p className='creatorInfo'>Address: {creatorInfo.address}</p>
         </div>
-        {this.props.loggedUser.id === parseInt(this.props.match.params.id) ? (
+        {this.props.loggedUser.id === this.props.match.params.id ? (
           <div>
             <Link to='/addReclaimed'>
               <button>add Reclaim</button>
