@@ -27,12 +27,9 @@ class ReclaimedList extends React.Component {
             let creatorAvatarUrl = creator.avatar_url
             let materialsString = creator.materials.join(', ')
 
-
-
-
             return (
               <div>
-                {parseInt(creator.count) !== 0 ? (
+                {creator.count !== "0" ? (
                   <Link to={linkString} key={creator.id}>
 
                     <div className='creatorItemRL'>
