@@ -26,7 +26,31 @@
     text-align: start;
 }
 
+.container--profile-avatar {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
 
+.profile-avatar {
+    width: 300px;
+    object-fit: cover;
+    margin-left: auto;
+}
 
+.profile-info {
+    margin: 22px 3px 3px 22px;
+    position: relative;
+    left: 22px;
+}
 
+.profile-info strong {
+    display: inline-block;
+    margin-top: 6px;
+    position: relative;
+    left: -22px;
+}
 
+.profile-add--button {
+    text-align: center;
+    margin: 11px 0px;
+}
