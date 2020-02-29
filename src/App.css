@@ -64,6 +64,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
 }
 
+h2 { /* SECTION TITLES */
+  font-size: 1.3em;
+  margin: 2px 3px 22px 0px;
+}
+
 
 /* HELPERS */
 .j-flex-column {
