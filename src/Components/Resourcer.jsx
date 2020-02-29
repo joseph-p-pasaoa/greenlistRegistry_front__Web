@@ -73,18 +73,23 @@ class Resourcer extends React.Component {
           </div>
             
           <h5>Supplier Postings</h5>
+          <br />
           <div className='productsContainer'>
             {productInfo.map(el => {
               return (
                 <div key ={el.id}>
-                  <Link to={`/material/${el.id}`}>
-                    <div className='productCard'>
-                      <img className='productPic' src={el.photo_url} alt="material"></img>
-                      <p className='productName'><strong>Product Name:</strong><br />{el.name}</p>
-                      <p className='productName'><strong>Product Material:</strong><br />{el.materials_name}</p>
-                      <p className='productBody'><strong>Product Description:</strong><br />{el.body}</p>
+                  <Link to={`/material/${el.id}`} className="product-link">
+                    <div className='productCard j-flex-row'>
+                    <img className='productPic' src={el.photo_url} alt="material"></img>
+                      <div>
+                        <p className='productName'><strong>Product Name:</strong><br />{el.name}</p>
+                        <p className='productName'><strong>Product Material:</strong><br />{el.materials_name}</p>
+                        <p className='productBody'><strong>Product Description:</strong><br />{el.body}</p>
+                      </div>
+
                     </div>
                   </Link>
+                  <br /> <br />
                 </div>
               )
             })}

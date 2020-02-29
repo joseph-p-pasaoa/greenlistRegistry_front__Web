@@ -87,8 +87,8 @@ class App extends React.Component {
     }
     return (
       <>
-        <NavigationBar loggedUser={this.state} resetUser={this.resetUser} />
-        <Main loggedUser={this.state}  />
+        <NavigationBar z-index="200" loggedUser={this.state} resetUser={this.resetUser} />
+        <Main loggedUser={this.state} z-index="100" />
       </>
     )
   }
