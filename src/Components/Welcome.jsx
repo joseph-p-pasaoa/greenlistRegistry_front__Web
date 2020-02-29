@@ -62,7 +62,7 @@ class Welcome extends React.Component {
           />
           <label htmlFor="password">Password:</label>
           <input
-            type="text"
+            type="password"
             placeholder="password"
             onChange={this.handleInput}
             name="password"

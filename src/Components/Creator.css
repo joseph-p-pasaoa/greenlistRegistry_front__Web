@@ -56,3 +56,19 @@
     text-align: center;
     margin: 11px 0px;
 }
+
+.reclaimedCard {
+    height: 400px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.reclaim-delete {
+    position: absolute;
+    bottom: 0px;
+    justify-content: flex-end;
+}
+
+.reclaim-delete button {
+    width: 70px;
+}

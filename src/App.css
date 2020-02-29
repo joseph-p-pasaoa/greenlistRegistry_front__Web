@@ -111,7 +111,7 @@ h5 {
 /* MAIN BUILD */
 body, p {
   font-family: 'Lato', sans-serif;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 body {
@@ -152,7 +152,7 @@ body {
 
 .center-this {
   margin: 0px auto;
-  width: 725px;
+  width: 800px;
 }
 
 /* FORMS & INPUTS */
@@ -196,4 +196,13 @@ body {
 .j-form textarea {
   margin-bottom: 9px;
   padding-top: 7px;
+}
+
+.pad-bottom {
+  padding-bottom: 44px;
+  border-bottom: solid 11px rgba(148, 175, 93, 0.4);
+}
+
+.dropdown-menu {
+  z-index: 100;
 }

@@ -99,7 +99,7 @@ class Main extends React.Component {
         <span> / </span>
         <button>REQUESTS</button> */}
         <div className="main-results">
-          <div className="center-this">
+          <div className="center-this pad-bottom">
             { (list === 'reclaimed') ? <ReclaimedList/> : <></>}
             { (list === 'new') ? <NewList/> : <></>}
             { (list === 'recSearch') ? <ReclaimedSearch searchResult={searchResult}/> : <></>}

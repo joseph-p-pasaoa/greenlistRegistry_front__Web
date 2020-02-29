@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import './Material.css';
 
 class Material extends React.Component {
   constructor(props) {
@@ -39,35 +40,40 @@ class Material extends React.Component {
     const { materialInfo } = this.state
     return (
       <div className='container-stage'>
-        <h1>Material</h1>
-        <div className='materialCard'>{
-          materialInfo.map((info, index) => {
-            return (
-              <div key={index}>
-                <p className='materialName'>{info.name}</p>
-                <img className='materialPic' src={info.photo_url} alt="hi-res descriptive look" style={{height:"350px"}}></img>
-                <p className='materialDescription'>{info.description}</p>
-                <br/>
-                <div className='benefits'>
-                  <p className='benefitsTitle'>Benefits</p>
+        <div className="center-this">
+          {/* <h2>Material: </h2> */}
+          <div className='materialCard'>{
+            materialInfo.map((info, index) => {
+              return (
+                <div key={index}>
+                  <h2>{info.name}</h2>
+                  {/* <p className='materialName'>{info.name}</p> */}
+                  <img className='materialPic' src={info.photo_url} alt="hi-res descriptive look" style={{height:"350px"}}></img>
+                  <br />
+                  <br />
+                  <p className='materialDescription'>{info.description}</p>
                   <br/>
-                  <div className='socialBenefit'>
-                    <p className='benefitsBody'>{info.socialbenefit}</p>
-                  </div>
-                  <br/>
-                  <div className='environmentBenefit'>
-                    <p className='benefitsBody'>{info.environmentbenefit}</p>
-                  </div>
-                  <br/>
-                  <div className='costBenefit'>
-                    <p className='benefitsBody'>{info.costbenefit}</p>
+                  <div className='benefits'>
+                    <h3 className='benefitsTitle'>Benefits</h3>
+                    <br/>
+                    <div className='socialBenefit'>
+                      <p className='benefitsBody'>{info.socialbenefit}</p>
+                    </div>
+                    <br/>
+                    <div className='environmentBenefit'>
+                      <p className='benefitsBody'>{info.environmentbenefit}</p>
+                    </div>
+                    <br/>
+                    <div className='costBenefit'>
+                      <p className='benefitsBody'>{info.costbenefit}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })
-        }
+              )
+            })
+          }
 
+          </div>
         </div>
       </div>
     )
