@@ -45,7 +45,7 @@ class Material extends React.Component {
             return (
               <div key={index}>
                 <p className='materialName'>{info.name}</p>
-                <img className='materialPic' src={info.photo_url} alt="hi-res descriptive look"></img>
+                <img className='materialPic' src={info.photo_url} alt="hi-res descriptive look" style={{height:"350px"}}></img>
                 <p className='materialDescription'>{info.description}</p>
                 <br/>
                 <div className='benefits'>
