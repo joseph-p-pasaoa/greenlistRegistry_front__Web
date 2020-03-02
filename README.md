@@ -4,12 +4,16 @@ Designers, especially independent and small designers, lack a centralized resour
 
 Greenlist Registry aims to be an official registry, directory, and forum for designers and brands to find providers and suppliers of green materials. As well as serve as a networking vessel for material reclaim.
 
-## Repos
+We see Greenlist as an app that can be implemented sooner rather than later into the fashion ecosystem and it would fill a large gap in the workflow of independent designers and small businesses.
+
+---
+
+### Repos
 
 - [Back End](https://github.com/joseph-p-pasaoa/greenlistRegistry_back__Web)
 - [Front End](https://github.com/joseph-p-pasaoa/greenlistRegistry_front__Web) (this repo)
 
-## Developers
+## **Developers**
 
 - [**Aransa Garcia**](https://github.com/aransagarcia) (Program Manager)
 - [**Joseph P. Pasaoa**](https://github.com/joseph-p-pasaoa) (Tech Lead)
@@ -41,4 +45,4 @@ Greenlist Registry aims to be an official registry, directory, and forum for des
 
 ---
 
-Please refer to [Greenlist Registry's back-end repo](https://github.com/joseph-p-pasaoa/greenlistRegistry_back__Web) README for detailed information on this repo.
+Please refer to [Greenlist Registry's back-end repo](https://github.com/joseph-p-pasaoa/greenlistRegistry_back__Web) README for **detailed information on this repo**.
