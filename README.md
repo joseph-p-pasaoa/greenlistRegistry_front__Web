@@ -8,7 +8,7 @@ We see Greenlist as an app that can be implemented sooner rather than later into
 
 ---
 
-### Repos
+### _Repos_
 
 - [Back End](https://github.com/joseph-p-pasaoa/greenlistRegistry_back__Web)
 - [Front End](https://github.com/joseph-p-pasaoa/greenlistRegistry_front__Web) (this repo)
