@@ -1,5 +1,7 @@
 # Greenlist Registry (front end) (full-stack app)
 
+**WINNER** of Pursuit 6.2 Hackathon's **Most Impactful Award**!
+
 Designers, especially independent and small designers, lack a centralized resource to find, research, and even discover eco-friendly sustainable materials they can use.
 
 Greenlist Registry aims to be an official registry, directory, and forum for designers and brands to find providers and suppliers of green materials. As well as serve as a networking vessel for material reclaim.
@@ -25,15 +27,16 @@ We see Greenlist as an app that can be implemented sooner rather than later into
 - **LEAD Instructor:** [Alejandro Franco](https://github.com/alejo4373)
 - **IA:** [Jung Rae Jang](https://github.com/jungraejang)
 - **IA:** [Wynter Reid](https://github.com/wynterreid)
-- **Program Manager:** Dessa Shepherd
+- **Program Manager:** [Dessa Shepherd](https://www.linkedin.com/in/dessa-shepherd-7a55b374/)
 - **Mentor:** [Robert Abreu](http://www.fiveeightyeight.com/)
+- **Uber Tech Advisor:** [Prateek Arora](https://www.linkedin.com/in/arora-prateek/)
 
 ## Industry Advisors
 
-- Percy Hicks -- [EclecticLifestyleByPercyHicks | Instagram](https://www.instagram.com/eclecticlifestylesbypercyhicks)
+- Percy Hicks -- [EclecticLifestyleByPercyHicks (Instagram)](https://www.instagram.com/eclecticlifestylesbypercyhicks)
 - Isabella Montoya Paz -- [PazLifestyle](https://www.pazlifestyle.com/)
-- Van Tran -- ()
-- Lisa ? -- ()
+- Van Tran -- [Van Tran | Sport Elle Inc](https://www.linkedin.com/in/van-tran-ny/)
+- Lisa Vastola -- [Lisa Vastola | Republic Clothing Group](https://www.linkedin.com/in/lisa-vastola-8371431b/)
 
 ---
 
@@ -45,4 +48,4 @@ We see Greenlist as an app that can be implemented sooner rather than later into
 
 ---
 
-Please refer to [Greenlist Registry's back-end repo](https://github.com/joseph-p-pasaoa/greenlistRegistry_back__Web) README for **detailed information on this repo**.
+Please refer to [Greenlist Registry's back-end repo](https://github.com/joseph-p-pasaoa/greenlistRegistry_back__Web) README for **detailed information on this entire Greenlist application**.
