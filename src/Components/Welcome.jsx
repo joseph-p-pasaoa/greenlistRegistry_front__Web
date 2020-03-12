@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import './Welcome.css';
 const logo = require('../assets/images/logo_200228.png');
 
 class Welcome extends React.Component {
@@ -55,7 +56,7 @@ class Welcome extends React.Component {
           <label htmlFor="username">Username:</label>
           <input
             type="text"
-            placeholder="username"
+            placeholder=""
             onChange={this.handleInput}
             name="username"
             value={username}
@@ -63,7 +64,7 @@ class Welcome extends React.Component {
           <label htmlFor="password">Password:</label>
           <input
             type="password"
-            placeholder="password"
+            placeholder=""
             onChange={this.handleInput}
             name="password"
             value={password}
