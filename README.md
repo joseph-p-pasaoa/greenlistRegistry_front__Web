@@ -2,6 +2,12 @@
 
 **WINNER** of Pursuit 6.2 Hackathon's **Most Impactful Award**!
 
+## **This repo's data has been merged with its backend counterpart into one repo. This repo is now ARCHIVED. Please visit the permanent repo at:**
+
+## [https://github.com/joseph-p-pasaoa/greenlist__FSWeb](https://github.com/joseph-p-pasaoa/greenlist__FSWeb)
+
+---
+
 ![screen capture of Welcome page](./readme/screencap_welcome_hires.png)
 
 Designers, especially independent and small designers, lack a centralized resource to find, research, and even discover eco-friendly sustainable materials they can use.
